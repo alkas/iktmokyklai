@@ -603,7 +603,7 @@ mr = (function (mr, $, window, document){
         $('.countdown[data-date]').each(function(){
             var element      = $(this),
                 date         = element.attr('data-date'),
-                daysText     = typeof element.attr('data-days-text') !== typeof undefined ? '%D '+element.attr('data-days-text')+' %H:%M:%S': '%D days %H:%M:%S',
+                daysText     = typeof element.attr('data-days-text') !== typeof undefined ? '%D '+element.attr('data-days-text')+' %H:%M:%S': '%D d. %H:%M:%S',
                 daysText     = typeof mr.countdown.options.format !== typeof undefined ? mr.countdown.options.format : daysText,
                 dateFormat   = typeof element.attr('data-date-format') !== typeof undefined ? element.attr('data-date-format'): daysText,
                 
