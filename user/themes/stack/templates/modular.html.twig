@@ -1,0 +1,32 @@
+{% extends 'dalys/baze.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% do assets.addCss('theme://css/lightbox.min.css', 107) %}
+  {% do assets.addCss('theme://css/flickity.css', 106) %}
+  {% do assets.addCss('theme://css/jquery.steps.css', 104) %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {% do assets.addJs('theme://js/flickity.min.js', {'priority':114, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/easypiechart.min.js', {'priority':113, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/parallax.js', {'priority':112, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/datepicker.js', {'priority':110, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/ytplayer.min.js', {'priority':108, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/lightbox.min.js', {'priority':107, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/jquery.steps.min.js', {'priority':105, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/countdown.min.js', {'priority':104, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/twitterfetcher.min.js', {'priority':103, 'group':'bottom'}) %}
+  {% do assets.addJs('theme://js/spectragram.min.js', {'priority':102, 'group':'bottom'}) %}
+{% endblock %}
+  
+{% block navigacija %}
+  {% include 'dalys/meniu.html.twig' %}
+{% endblock %}
+
+{% block lapas %}
+    {% for module in page.collection() %}
+      {{ module.content }}
+    {% endfor %}
+{% endblock %}

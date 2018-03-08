@@ -1,0 +1,54 @@
+{% embed 'dalys/baze.html.twig' %}
+  
+  {% set collection = page.collection() %}
+  
+  {% block lapas %}
+    {% include 'sekcijos/section-1.html.twig' %}
+  
+    <a id="demos"></a>
+  
+    {% include 'sekcijos/section-2.html.twig' %}
+  
+    {% block turinys %}
+      
+      <section class="bg--dark space--sm">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="masonry masonry-demos">
+                <div class="masonry-filter-container text-center row justify-content-center align-items-center">
+                  <span>Viewing:</span>
+                  <div class="masonry-filter-holder">
+                    <div class="masonry__filters">
+                      <ul>
+                        <li class="active" data-masonry-filter="*">All Categories</li>
+                        <li data-masonry-filter="blog">Blog</li>
+                        <li data-masonry-filter="coming-soon">Coming Soon</li>
+                        <li data-masonry-filter="industry">Industry</li>
+                        <li data-masonry-filter="landing">Landing</li>
+                        <li data-masonry-filter="portfolio">Portfolio</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="masonry__container masonry--active">
+                  
+                  {% for child in collection %}
+                    {% include 'partials/home_item.html.twig' with {'home':page, 'page':child, 'truncate':true} %}
+                  {% endfor %}
+                </div>
+                <!--end of masonry container-->
+              </div>
+              <!--end masonry-->
+            </div>
+          </div>
+          <!--end of row-->
+        </div>
+        <!--end of container-->
+      </section>
+	
+	  {% endblock %}
+  
+  {% endblock %}
+  
+{% endembed %}

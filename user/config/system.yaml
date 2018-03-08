@@ -19,7 +19,7 @@ home:
   alias: /home
   hide_in_urls: false
 pages:
-  theme: antimatter
+  theme: stack
   order:
     by: default
     dir: asc

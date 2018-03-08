@@ -1,0 +1,65 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getLanguage ?: 'lt' }}">
+<head>
+{% block head %}
+  <meta charset="utf-8" />
+  <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+  {# include 'partials/metadata.html.twig' #}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="{{ url('theme://img/favicon.png') }}" />
+  <link rel="canonical" href="{{ page.url(true, true) }}" />
+        
+        
+  {% block stylesheets %}
+    {% do assets.addCss('theme://css/bootstrap.css', 110) %}
+    {% do assets.addCss('theme://css/stack-interface.css', 109) %}
+    {% do assets.addCss('theme://css/socicon.css', 108) %}
+    {% do assets.addCss('theme://css/iconsmind.css', 105) %}
+    {% do assets.addCss('theme://css/theme.css', 103) %}
+    {% do assets.addCss('theme://css/custom.css', 102) %}
+    {% do assets.addCss('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i', 101) %}
+    {% do assets.addCss('https://fonts.googleapis.com/icon?family=Material+Icons', 100) %}
+  {% endblock %}
+  {{ assets.css() }}
+
+  {% block javascripts %}
+    {% do assets.addJs('theme://js/jquery-3.1.1.min.js', {'priority':115, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/typed.min.js', {'priority':111, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/isotope.min.js', {'priority':109, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/granim.min.js', {'priority':106, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/smooth-scroll.min.js', {'priority':101, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/scripts.js', {'priority':100, 'group':'bottom'}) %}
+  {% endblock %}
+  {{ assets.js() }}
+
+{% endblock head %}
+</head>
+<body class=" " data-smooth-scroll-offset='64'>
+  <a id="start"></a>
+  
+    {% block navigacija %}
+      {% include 'blokai/nav-container.html.twig' %}
+    {% endblock %}
+
+  <div class="main-container">
+    {% block lapas %}
+      
+        {% block turinys %}{% endblock %}
+      
+    {% endblock %}
+
+    {% block padas %}
+      {% include 'blokai/footer-3.html.twig' %}
+    {% endblock %}
+    
+  </div>
+    
+  <!--<div class="loader"></div>-->
+  <a class="back-to-top inner-link" href="#start" data-scroll-class="100vh:active">
+      <i class="stack-interface stack-up-open-big"></i>
+  </a>
+  {{ assets.js('bottom') }}
+  
+  </body>
+</html>
