@@ -1,0 +1,11 @@
+email: erikas.stanys@gmail.com
+fullname: 'Erikas Stanys'
+title: 'stebintis aplinką'
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$tiWvZJ9FyKjfHNxH.2NU0u/aN7Hy8YLHg0h/lrkxOjS035HBZT/C.
