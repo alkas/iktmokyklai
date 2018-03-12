@@ -1,0 +1,18 @@
+title: Skaidrių šablonas
+'@extends': 
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          fields:
+            header.google_adresas:
+              type: text
+              label: Google adresas
+              help: Enabled displaying of a header image
