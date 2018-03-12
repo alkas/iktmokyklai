@@ -9,11 +9,11 @@
   <div class="masonry__item col-md-6 text-center" data-masonry-filter="Šviesus,tamsus">
   	<div class="project-thumb">
     	<a href="{{ page.url }}">
-      	{#<img alt="Image" class="border--round" src="{{ page.media['work-6.jpg'].url }}" />#}
-      	{{ iliustracija.html('Šablono iliustracija', 'šablono iliustracija', 'border--round') }}
+      	<img alt="{{ page.title }} šablono iliustracija" class="border--round" src="{{ iliustracija.url }}" title="{{ page.title }} šablono iliustracija" />
+      	{#{ iliustracija.html('šablono iliustracija', 'šablono iliustracija', 'border--round') }#}
     	</a>
   	  <h4>{{ page.title }}</h4>
-      <span>{{ iliustracija.url }}</span>
+      <span></span>
     </div>
   </div>
   <!--end item-->
