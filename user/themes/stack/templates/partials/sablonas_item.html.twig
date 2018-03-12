@@ -1,0 +1,21 @@
+{% set iliustracija = page.media.images|first %}
+
+{% if not truncate %}
+  
+  
+  
+{% else %}  
+  
+  <div class="masonry__item col-md-6 text-center" data-masonry-filter="Šviesus,tamsus">
+  	<div class="project-thumb">
+    	<a href="{{ page.url }}">
+      	{#<img alt="Image" class="border--round" src="{{ page.media['work-6.jpg'].url }}" />#}
+      	{{ iliustracija.html('Šablono iliustracija', 'šablono iliustracija', 'border--round') }}
+    	</a>
+  	  <h4>{{ page.title }}</h4>
+      <span>{{ iliustracija.url }}</span>
+    </div>
+  </div>
+  <!--end item-->
+  
+{% endif %}

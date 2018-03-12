@@ -1,0 +1,62 @@
+{% embed 'dalys/baze.html.twig' %}
+
+	{% set collection = page.collection() %}
+
+	{% block lapas %}
+	
+		<section class="imagebg image--light cover cover-blocks bg--secondary ">
+      <div class="background-image-holder hidden-xs">
+          <img alt="background" src="{{ url("theme://img/promo-1.jpg") }}" />
+      </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 col-lg-5 ">
+                  <div>
+                      <h1>Skaidrių šablonai</h1>
+                      <p class="lead">
+                          {{ page.content | striptags }}
+                      </p>
+                      <hr class="short">
+                      <p>
+                          All blocks shown here are available to use in
+                          <br class="hidden-xs hidden-sm" /> the included
+                          <a href="#" target="_blank">Variant Page Builder &nearr;</a>
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <!--end of row-->
+      </div>
+      <!--end of container-->
+  </section>
+	<section class=" ">
+    <div class="container">
+      <div class="masonry">
+	      <div class="masonry-filter-container text-center d-flex flex-wrap justify-content-center align-items-center">
+          <span>Rūšiuoti:</span>
+          <div class="masonry-filter-holder">
+            <div class="masonry__filters" data-filter-all-text="Visi"></div>
+          </div>
+        </div>
+	      <!--end masonry filters-->
+        <div class="masonry__container row">
+        	
+        	{% for child in collection %}
+			    
+			    	{% include 'partials/sablonas_item.html.twig' with {'page':child, 'truncate': true} %}
+					
+					{% endfor %}
+
+        </div>
+        <!--end of masonry container-->
+      </div>
+      <!--end masonry-->
+    </div>
+	  <!--end of container-->
+  </section>
+	
+	{% endblock %}
+
+{% endembed %}
+
+
