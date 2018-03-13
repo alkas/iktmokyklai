@@ -12,7 +12,11 @@ form:
       fields:
         content:
           fields:
+            header.prezentacijos_adresas:
+              type: text
+              label: Paskelbtos skaidrės adresas
+              help: Adresas, gaunamas publikuojant prezentaciją
             header.google_adresas:
               type: text
               label: Google adresas
-              help: Enabled displaying of a header image
+              help: Skaidrių failo adresas Google diske

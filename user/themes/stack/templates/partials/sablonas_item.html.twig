@@ -5,31 +5,32 @@
 <article>
 	<div class="article__title text-center">
 			<h1 class="h2">{{ page.title }}</h1>
-			<span>May 2nd 2016 in </span>
-			<span>
-					<a href="#">Web Design</a>
-			</span>
 	</div>
 	<!--end article title-->
+	<!--TODO sutvarkyti šešėlį -->
 	<div class="article__body">
-			<iframe src="{{ header.google_adresas }}" frameborder="0" width="100%" height="580" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+	  <div class="video-cover box-shadow-wide" style="position:relative;padding-top:56.25%;">
+			<iframe src="{{ header.prezentacijos_adresas }}/embed?start=false&loop=false" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+			</div>
+		<div class="article__share text-center">
+			<a class="btn bg--googleplus btn--icon" href="{{ header.google_adresas }}/copy" target="_blank">
+					<span class="btn__text">
+							<i class="socicon socicon-google"></i>
+							Išsaugoti Google diske
+					</span>
+			</a>
+			<a class="btn bg--facebook btn--icon" href="{{ header.google_adresas }}/export/pptx">
+					<span class="btn__text">
+							<i class="socicon socicon-windows"></i>
+							Parsisiųsti kaip Powerpoint
+					</span>
+			</a>
+	</div>
 			{{ page.content }}
+			{{ stars(page.route) }} 
 
 	</div>
-	<div class="article__share text-center">
-			<a class="btn bg--facebook btn--icon" href="#">
-					<span class="btn__text">
-							<i class="socicon socicon-facebook"></i>
-							Share on Facebook
-					</span>
-			</a>
-			<a class="btn bg--twitter btn--icon" href="#">
-					<span class="btn__text">
-							<i class="socicon socicon-twitter"></i>
-							Share on Twitter
-					</span>
-			</a>
-	</div>
+	
 </article>
 
   
