@@ -15,7 +15,10 @@
     {% do assets.addCss('theme://css/bootstrap.css', 110) %}
     {% do assets.addCss('theme://css/stack-interface.css', 109) %}
     {% do assets.addCss('theme://css/socicon.css', 108) %}
+    {% do assets.addCss('theme://css/lightbox.min.css', 107) %}
+    {% do assets.addCss('theme://css/flickity.css', 106) %}
     {% do assets.addCss('theme://css/iconsmind.css', 105) %}
+    {% do assets.addCss('theme://css/jquery.steps.css', 104) %}
     {% do assets.addCss('theme://css/theme.css', 103) %}
     {% do assets.addCss('theme://css/custom.css', 102) %}
     {% do assets.addCss('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i', 101) %}
@@ -25,9 +28,19 @@
 
   {% block javascripts %}
     {% do assets.addJs('theme://js/jquery-3.1.1.min.js', {'priority':115, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/flickity.min.js', {'priority':114, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/easypiechart.min.js', {'priority':113, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/parallax.js', {'priority':112, 'group':'bottom'}) %}
     {% do assets.addJs('theme://js/typed.min.js', {'priority':111, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/datepicker.js', {'priority':110, 'group':'bottom'}) %}
     {% do assets.addJs('theme://js/isotope.min.js', {'priority':109, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/ytplayer.min.js', {'priority':108, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/lightbox.min.js', {'priority':107, 'group':'bottom'}) %}
     {% do assets.addJs('theme://js/granim.min.js', {'priority':106, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/jquery.steps.min.js', {'priority':105, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/countdown.min.js', {'priority':104, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/twitterfetcher.min.js', {'priority':103, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/spectragram.min.js', {'priority':102, 'group':'bottom'}) %}
     {% do assets.addJs('theme://js/smooth-scroll.min.js', {'priority':101, 'group':'bottom'}) %}
     {% do assets.addJs('theme://js/scripts.js', {'priority':100, 'group':'bottom'}) %}
   {% endblock %}
@@ -35,7 +48,7 @@
 
 {% endblock head %}
 </head>
-<body class=" " data-smooth-scroll-offset='64'>
+<body>
   <a id="start"></a>
   
     {% block navigacija %}
@@ -43,11 +56,8 @@
     {% endblock %}
 
   <div class="main-container">
-    {% block lapas %}
-      
-        {% block turinys %}{% endblock %}
-      
-    {% endblock %}
+    
+    {% block turinys %}{% endblock %}
 
     {% block padas %}
       {% include 'blokai/footer-3.html.twig' %}

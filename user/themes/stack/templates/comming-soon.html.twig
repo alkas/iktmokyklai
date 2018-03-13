@@ -4,7 +4,7 @@
   {% include 'dalys/meniu.html.twig' %}
 {% endblock %}
 
-{% block lapas %}
+{% block turinys %}
   <section class="imagebg height-100 text-center" data-gradient-bg="#5f2c82,#49a09d,#F3A183,#5f2c82">
     <div class="background-image-holder">
         <img alt="background" src="{{ url("theme://img/inner-4.jpg") }}" />
@@ -68,18 +68,4 @@
 
 {% block padas %}
   {# include 'blokai/footer-3.html.twig' #}
-{% endblock %}
-
-{% block javascripts %}
-  {{ parent() }}
-  {% do assets.addJs('theme://js/flickity.min.js', {'priority':114, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/easypiechart.min.js', {'priority':113, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/parallax.js', {'priority':112, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/datepicker.js', {'priority':110, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/ytplayer.min.js', {'priority':108, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/lightbox.min.js', {'priority':107, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/jquery.steps.min.js', {'priority':105, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/countdown.min.js', {'priority':104, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/twitterfetcher.min.js', {'priority':103, 'group':'bottom'}) %}
-  {% do assets.addJs('theme://js/spectragram.min.js', {'priority':102, 'group':'bottom'}) %}
 {% endblock %}

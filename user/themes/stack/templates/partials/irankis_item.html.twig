@@ -1,0 +1,83 @@
+{% set iliustracija = page.media.images|first %}
+
+{% if not truncate %}
+	
+  <article>
+    <div class="imagebg text-center height-60" data-overlay="5">
+      <div class="background-image-holder">
+        <img alt="background" src="{{ iliustracija.url }}" />
+      </div>
+      <div class="container pos-vertical-center">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="article__title">
+              <h1>{{ page.title }}</h1>
+              <span>May 2nd 2016 in </span>
+              <span>
+                <a href="#">Web Design</a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+      <div class="pos-absolute pos-bottom col-12 text-center">
+        <div class="article__author">
+          <img alt="Image" src="img/avatar-round-1.png" />
+          <h6 class="type--uppercase">Beth Vickers</h6>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10 col-lg-8">
+            <div class="article__body">
+
+              {{ page.content }}
+
+            </div>
+                                    <div class="article__share text-center">
+                                        <a class="btn bg--facebook btn--icon" href="#">
+                                            <span class="btn__text">
+                                                <i class="socicon socicon-facebook"></i>
+                                                Share on Facebook
+                                            </span>
+                                        </a>
+                                        <a class="btn bg--twitter btn--icon" href="#">
+                                            <span class="btn__text">
+                                                <i class="socicon socicon-twitter"></i>
+                                                Share on Twitter
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end of row-->
+                        </div>
+                        <!--end of container-->
+                    </div>
+                </article>
+
+  
+  
+{% else %}  
+  
+  <div class="masonry__item col-md-12 col-12" data-masonry-filter="Marketing">
+    <a class="block" href="{{ page.url }}">
+      <article class="imagebg border--round" data-scrim-bottom="8">
+        <span class="label">New</span>
+        <div class="background-image-holder">
+          <img alt="{{ page.title }} iliustracija" src="{{ iliustracija.url }}" />
+        </div>
+        <div class="article__title">
+          <span>May 15th 2016</span>
+          <h4>{{ page.title }}</h4>
+        </div>
+      </article>
+    </a>
+  </div>
+  <!--end item-->
+  
+{% endif %}

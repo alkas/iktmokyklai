@@ -1,0 +1,59 @@
+{% embed 'dalys/baze.html.twig' %}
+
+	{% set collection = page.collection() %}
+
+	{% block turinys %}
+	
+		<section class="space--sm">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="masonry masonry-blog-magazine">
+              <div class="masonry-filter-container d-flex align-items-center">
+                <span>Rūšiuoti:</span>
+                <div class="masonry-filter-holder">
+                  <div class="masonry__filters" data-filter-all-text="Visi"></div>
+                </div>
+              </div>
+              <div class="masonry__container row">
+
+                {% for child in collection %}
+                  
+                  {% include 'partials/irankis_item.html.twig' with {'page':child, 'truncate': true} %}
+                  
+                {% endfor %}
+                
+              </div>
+              <!--end masonry container-->
+
+              {#<div class="pagination">
+                <a class="pagination__prev" href="#" title="Previous Page">&laquo;</a>
+                <ol>
+                  <li>
+                    <a href="#">1</a>
+                  </li>
+                  <li>
+                    <a href="#">2</a>
+                  </li>
+                  <li class="pagination__current">3</li>
+                  <li>
+                    <a href="#">4</a>
+                  </li>
+                </ol>
+                <a class="pagination__next" href="#" title="Next Page">&raquo;</a>
+              </div>#}
+
+            </div>
+            <!--end masonry-->
+          </div>
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+	
+	{% endblock %}
+
+{% endembed %}
+
+

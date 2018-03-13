@@ -1,0 +1,11 @@
+{% embed 'dalys/baze.html.twig' %}
+
+	{% block turinys %}
+	
+		<section class="unpad">
+			{% include 'partials/irankis_item.html.twig' with {'blog':page.parent, 'truncate':false} %}
+		</section>	
+	
+	{% endblock %}
+
+{% endembed %}
