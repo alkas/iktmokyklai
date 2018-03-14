@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-3 col-md-2">
-          <a href="index.html">
+          <a href="{{ base_url == '' ? '/' : base_url }}">
             <img class="logo logo-dark" alt="logo" src="{{ url("theme://img/logo-dark.png") }}" />
             <img class="logo logo-light" alt="logo" src="{{ url("theme://img/logo-light.png") }}" />
           </a>
@@ -19,7 +19,7 @@
     <!--end of container-->
   </div>
   <!--end bar-->
-  <nav id="menu1" class="bar bar--sm bar-1 hidden-xs bar--absolute bar--transparent">
+  <nav id="menu1" class="bar bar--sm bar-1 hidden-xs{% if permatomas %} bar--absolute bar--transparent{% endif %}">
     <div class="container">
       <div class="row">
         <div class="col-lg-1 col-md-2 hidden-xs">

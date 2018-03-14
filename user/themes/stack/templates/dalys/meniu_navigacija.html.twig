@@ -16,6 +16,14 @@
 {% endmacro %}
 
 <ul class="menu-horizontal text-left">
+  <li>
+    <a href="{{ uri.rootUrl() }}/resursai/skaidriu-sablonai">sdfsdfs</a>
+  </li>
+  {% for page in pages.children.visible %}
+    <li>
+      <a href="{{ page.url }}">{{ page.menu }}</a>
+    </li>
+  {% endfor %}
   <li class="dropdown">
     <span class="dropdown__trigger">Home</span>
     <div class="dropdown__container">

@@ -3,19 +3,16 @@
 {% if not truncate %}
 	
   <article>
-    <div class="imagebg text-center height-60" data-overlay="5">
+    <div class="imagebg text-center height-60 parallax" data-overlay="5">
       <div class="background-image-holder">
         <img alt="background" src="{{ iliustracija.url }}" />
       </div>
-      <div class="container pos-vertical-center">
+      <div class="container pos-vertical-center" style="top: 80%;">
         <div class="row">
           <div class="col-md-12">
             <div class="article__title">
               <h1>{{ page.title }}</h1>
-              <span>May 2nd 2016 in </span>
-              <span>
-                <a href="#">Web Design</a>
-              </span>
+              <span>Paskelbta {{ page.date|date("Y-m-d") }}</span>
             </div>
           </div>
         </div>
@@ -24,8 +21,8 @@
       <!--end of container-->
       <div class="pos-absolute pos-bottom col-12 text-center">
         <div class="article__author">
-          <img alt="Image" src="img/avatar-round-1.png" />
-          <h6 class="type--uppercase">Beth Vickers</h6>
+          <img alt="Image" src="{{ url("theme://img/avatar-round-1.png") }}" />&nbsp;
+          <span class="type--uppercase">{{ page.header.author }}Dalia Stanienė</span>
         </div>
       </div>
     </div>
@@ -36,38 +33,46 @@
             <div class="article__body">
 
               {{ page.content }}
+              
+              <span>
+                Žymos:
+                {% for zyma in page.taxonomy.zyma %}
+                   #<a href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}">{{ zyma }}</a>
+                {% endfor %}
+              </span>
 
             </div>
-                                    <div class="article__share text-center">
-                                        <a class="btn bg--facebook btn--icon" href="#">
-                                            <span class="btn__text">
-                                                <i class="socicon socicon-facebook"></i>
-                                                Share on Facebook
-                                            </span>
-                                        </a>
-                                        <a class="btn bg--twitter btn--icon" href="#">
-                                            <span class="btn__text">
-                                                <i class="socicon socicon-twitter"></i>
-                                                Share on Twitter
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end of row-->
-                        </div>
-                        <!--end of container-->
-                    </div>
-                </article>
+            <div class="article__share text-center">
+              <a class="btn bg--facebook btn--icon" href="#">
+                <span class="btn__text">
+                  <i class="socicon socicon-facebook"></i>
+                  Share on Facebook
+                </span>
+              </a>
+              <a class="btn bg--twitter btn--icon" href="#">
+                <span class="btn__text">
+                  <i class="socicon socicon-twitter"></i>
+                  Share on Twitter
+                </span>
+              </a>
+            </div>
+            {{ jscomments() }} 
+          </div>
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </div>
+  </article>
 
   
   
 {% else %}  
   
-  <div class="masonry__item col-md-12 col-12" data-masonry-filter="Marketing">
+  <div class="masonry__item col-md-12 col-12" data-masonry-filter="{% for zyma in page.taxonomy.zyma %}{{ zyma }},{% endfor %}">
     <a class="block" href="{{ page.url }}">
       <article class="imagebg border--round" data-scrim-bottom="8">
-        <span class="label">New</span>
+        <span class="label">Naujas</span>
         <div class="background-image-holder">
           <img alt="{{ page.title }} iliustracija" src="{{ iliustracija.url }}" />
         </div>

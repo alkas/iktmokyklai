@@ -4,8 +4,8 @@ author:
   name: 'Erikas Stanys'
   email: erikas.stanys@gmail.com
 taxonomies:
-  - category
-  - tag
+  - kategorija
+  - zyma
   - tipas
 metadata:
   description: 'Grav is an easy to use, yet powerful, open source flat-file CMS'

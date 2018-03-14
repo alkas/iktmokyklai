@@ -1,5 +1,9 @@
 {% embed 'dalys/baze.html.twig' %}
-
+	
+	{% block navigacija %}
+    {% include 'dalys/meniu.html.twig' with {'permatomas':true} %}
+  {% endblock %}
+	
 	{% block turinys %}
 	
 		<section class="unpad">
