@@ -4,3 +4,4 @@ assets/*
 cache/*
 images/*
 logs/*
+tmp/*
