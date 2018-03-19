@@ -6,3 +6,6 @@
   top: 30px;
 }
 
+.nav-sidebar-column .logo {
+  width: 160px; max-height: 68px; top: 0;
+}

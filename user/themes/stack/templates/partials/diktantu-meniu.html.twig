@@ -46,7 +46,7 @@
         {% else %}
             <ul class="topics">
                 {% if theme_config.dailyrascio_page %}
-                    {{ _self.loop(page.find(theme_config.dailyrascio_page), '') }}
+                    {{ _self.loop(page.find(theme_config.diktantai_pradinis), '') }}
                 {% else %}
             {{ _self.loop(pages, '') }}
                 {% endif %}
@@ -55,7 +55,7 @@
         <hr />
 
         <a class="padding" href="#" data-clear-history-toggle><i
-                    class="fa fa-fw fa-history"></i> {{ 'THEME_LEARN2_CLEAR_HISTORY'|t }}</a><br/>
+                    class="fa fa-fw fa-history"></i> Išvalyti istoriją</a><br/>
 
         <section id="footer">
             <p>{{ 'THEME_LEARN2_BUILT_WITH_GRAV'|t }}</p>
