@@ -1,9 +1,12 @@
-title: Features
+title: Savybės
 '@extends': default
 
 form:
   fields:
     tabs:
+      type: tabs
+      active: 1
+      
       fields:
         advanced:
           fields:
@@ -12,16 +15,16 @@ form:
                 column1:
                   fields:
                     name:
-                      default: modular/features
+                      default: modular/savybes
                       '@data-options': '\Grav\Common\Page\Pages::modularTypes'
             overrides:
               fields:
                 header.template:
-                  default: modular/features
+                  default: modular/savybes
                   '@data-options': '\Grav\Common\Page\Pages::modularTypes'
         features:
           type: tab
-          title: Features
+          title: Savybės
           fields:
             header.features:
               name: features
