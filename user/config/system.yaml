@@ -16,7 +16,7 @@ languages:
   http_accept_language: false
   override_locale: false
 home:
-  alias: /comming-soon
+  alias: /pradzia
   hide_in_urls: false
 pages:
   theme: stack

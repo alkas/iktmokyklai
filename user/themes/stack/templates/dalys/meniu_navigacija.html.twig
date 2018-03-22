@@ -1,27 +1,63 @@
-{% macro loop(page) %}
-  {% for p in page.children.visible %}
-    {# set current_page = (p.active or p.activeChild) ? 'active' : '' #}
-    {% if p.children.visible.count > 0 %}
-      <li class="dropdown">
-        <span class="dropdown__trigger">{{ p.menu }}</span>
-        <div class="dropdown__container">
-          <div class="container">
-            <div class="row">
-              <div class="dropdown__content col-lg-2 col-md-4">
-                <ul class="menu-vertical">
-    {% else %}
-    
-    {% endif %}
-  {% endfor %}
-{% endmacro %}
-
 <ul class="menu-horizontal text-left">
   <li>
-    <a href="{{ uri.rootUrl() }}/resursai/skaidriu-sablonai">sdfsdfs</a>
+    <a href="{{ uri.rootUrl() }}">Pradžia</a>
   </li>
-  {% for page in pages.children.visible %}
-    <li>
-      <a href="{{ page.url }}">{{ page.menu }}</a>
-    </li>
-  {% endfor %}
+  <li>
+    <a href="{{ uri.rootUrl() }}/naujienos">Naujienos</a>
+  </li>
+  <li>
+    <a href="{{ uri.rootUrl() }}">Apžvalgos</a>
+  </li>
+  <li>
+    <a href="{{ uri.rootUrl() }}">Seminarai</a>
+  </li>
+  <li class="dropdown dropdown--hover">
+    <a href="{{ uri.rootUrl() }}" class="dropdown__trigger">Resursai</a>
+    <div class="dropdown__container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 col-lg-6 dropdown__content">
+            <div class="row">
+              <div class="col-md-4">
+                <ul class="menu-vertical">
+                  <li>
+                    <a href="{{ uri.rootUrl() }}/irankiai">
+                      Įrankiai
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h5>Paruošti šablonai</h5>
+                <ul class="menu-vertical">
+                  <li>
+                    <a href="{{ uri.rootUrl() }}/resursai/skaidriu-sablonai">
+                      Skaidrių šablonai
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h5>Pradinukams</h5>
+                <ul class="menu-vertical">
+                  <li>
+                    <a href="{{ uri.rootUrl() }}/dailyrastis">
+                      Dailyraščio pamokos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ uri.rootUrl() }}/diktantai">
+                      Diktantai
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end dropdown content-->
+    </div>
+  </li>
 </ul>

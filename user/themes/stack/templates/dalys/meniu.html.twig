@@ -2,15 +2,15 @@
   <div class="bar bar--sm visible-xs">
     <div class="container">
       <div class="row">
-        <div class="col-3">
+        <div class="col-6">
           <a href="{{ base_url == '' ? '/' : base_url }}">
             <img class="logo logo-dark" alt="logo" src="{{ url("theme://images/iktmokyklai-logo-min.svg") }}" />
             <img class="logo logo-light" alt="logo" src="{{ url("theme://images/iktmokyklai-logo-white.svg") }}" />
           </a>
         </div>
-        <div class="col-9 text-right">
+        <div class="col-6 text-right pos-vertical-center">
           <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs">
-            <i class="icon icon--sm stack-interface stack-menu"></i>
+            <i class="icon icon--sm stack-interface stack-menu" style="margin-top: 15px;"></i>
           </a>
         </div>
       </div>
@@ -22,7 +22,7 @@
   <nav id="menu1" class="bar bar--sm bar-1 hidden-xs{% if permatomas %} bar--absolute bar--transparent{% endif %}">
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 col-md-3 hidden-xs">
+        <div class="col-lg-2 col-md-4 hidden-xs">
           <div class="bar__module">
             <a href="{{ base_url == '' ? '/' : base_url }}">
               <img class="logo logo-dark" alt="logo" src="{{ url("theme://images/iktmokyklai-logo-min.svg") }}" />
@@ -31,7 +31,7 @@
           </div>
           <!--end module-->
         </div>
-        <div class="col-lg-10 col-md-9 text-right text-left-xs text-left-sm">
+        <div class="col-lg-10 col-md-8 text-right text-left-xs text-left-sm">
           <div class="bar__module">
             
             {% include 'dalys/meniu_navigacija.html.twig' %}
