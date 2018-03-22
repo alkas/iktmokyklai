@@ -1,0 +1,52 @@
+<div class="nav-container nav-container--sidebar">
+  <div class="nav-sidebar-column">
+    <div class="text-center text-block">
+      <a href="{{ theme_config.home_url ?: base_url_absolute }}">
+        <img alt="logo" class="logo" src="{{ url("theme://images/iktmokyklai-logo-min.svg") }}" />
+      </a>
+      <p>
+        Build Something
+        <em>Brilliant.</em>
+      </p>
+      <p>{% include 'partials/search.html.twig' %}</p>
+    </div>
+    <hr>
+    <div class="text-block">
+      {% include 'dalys/diktantai-meniu_sarasas.html.twig' %}
+    </div>
+    <hr>
+    <div>
+      <ul class="social-list list-inline list--hover">
+        <li>
+          <a href="#">
+            <i class="socicon socicon-google icon icon--xs"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="socicon socicon-twitter icon icon--xs"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="socicon socicon-facebook icon icon--xs"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="socicon socicon-instagram icon icon--xs"></i>
+          </a>
+        </li>
+      </ul>
+      <div>
+        <span class="type--fine-print type--fade">
+          &copy; Copyright
+          <span class="update-year"></span> IKT mokyklai
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="nav-sidebar-column-toggle visible-xs visible-sm" data-toggle-class=".nav-sidebar-column;active">
+    <i class="stack-menu"></i>
+  </div>
+</div>
