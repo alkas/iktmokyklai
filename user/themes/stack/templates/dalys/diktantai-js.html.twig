@@ -1,0 +1,22 @@
+$(document).ready(
+  function(){
+    var sound = new Howl({
+      src: ['{{ page.media['diktantas.mp3'].url() }}']
+    });
+    $('#playBtn').on("click", function(){
+      sound.play();
+      $('#playBtn').hide();
+      $('#pauseBtn').show();
+    })
+    $('#pauseBtn').on("click", function(){
+      sound.pause();
+      $('#pauseBtn').hide();
+      $('#playBtn').show();
+    })
+    sound.on("end", function(){
+      $('#pauseBtn').hide();
+      $('#playBtn').show();
+    })
+
+  }
+)

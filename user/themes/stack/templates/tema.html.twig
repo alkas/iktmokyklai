@@ -15,3 +15,15 @@
 {% block turinys %}
     {% include 'dalys/diktantai-pamoka.html.twig' %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% do assets.addJs('theme://js/howler.core.min.js', {'priority':115, 'group':'bottom'}) %}
+{% endblock %}
+
+{% block skriptas %}
+    <script>
+            {% include 'dalys/diktantai-js.html.twig' %}
+    
+</script>
+{% endblock %}
