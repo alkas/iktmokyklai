@@ -1,16 +1,14 @@
-<section class="imagebg image--light cover cover-blocks bg--secondary ">
-  <div class="background-image-holder hidden-xs">
-    <img alt="background" src="{{ url("theme://img/promo-1.jpg") }}" />
-  </div>
+{% set zodziuSkaicius = content|split(' ')|length %}
+{% set sakiniuSkaicius = content|split('. ')|length + (content|split('! ')|length - 1) + (content|split('? ')|length - 1) %}
+
+<section class="text-center" style="padding-bottom: 3em;">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-5 ">
-        <div>
-          <h1>{{ page.title }}</h1>
-          <p class="lead">
-            Stack includes support for a sidebar column navigation the left, or right of the page
-          </p>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8 ">
+        <h2>{{ page.title }}</h2>
+        <p class="lead">
+          Žodžių: {{ zodziuSkaicius }}, sakinių: {{ sakiniuSkaicius }}
+        </p>
       </div>
     </div>
     <!--end of row-->
@@ -26,47 +24,75 @@
             <li class="active">
               <div class="tab__title">
                 <i class="icon icon--sm block icon-Ear"></i>
-                <span>Išklausykite</span>
+                <span>1. Išklausykite</span>
               </div>
               <div class="tab__content">
-                <p class="lead">
-                  Pirmiausia išklausykite visą diktanto tekstą.
-                </p>
+                
                 {#<section class="space--sm blog-article-wide">#}
-                  <div class="container">
-                    <div class="row cta cta--horizontal">
-                      <div class="col-2">
-                          <i id= "playBtn" class="icon icon--sm icon-Start color--primary"></i>
-                          <i id="pauseBtn" class="icon icon--sm icon-Pause color--primary" style="display: none;"></i>
-                      </div>
-                      <div class="col-10">
-                          <p class="lead">Visas tekstas</p>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12">
+                      <p>
+                        Pirmiausia leiskite vaikui išklausyti visą diktanto tekstą.
+                      </p>
+                      <div class="audio-list">
+                        <div id="audio" class="audio-item">
+                          <div id="playBtn">
+                            <i class="audio__icon icon icon-Start color--primary"></i>
+                            <div class="audio__text">Pilnas diktanto tekstas</div>
+                          </div>
+                          <div id="pauseBtn" style="display: none;">
+                            <i class="audio__icon icon icon-Pause color--primary"></i>
+                            <div class="audio__text" style="color: #fd7e14">Pilnas diktanto tekstas</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                </div>
                 {#</section>#}
               </div>
             </li>
+            {% if page.header.sakiniai|length > 0 %}
             <li>
               <div class="tab__title">
                 <i class="icon icon--sm block icon-Text-HighlightColor"></i>
-                <span>Rašykite</span>
+                <span>2. Rašykite po vieną sakinį</span>
               </div>
               <div class="tab__content">
-                <p class="lead">
-                  https://howlerjs.com/  - html5 js grotuvas
-                </p>
-                <p class="lead">
-                  
-                  <a href="#"><i class="icon icon--sm block icon-Play"></i> Rašykite</a>
-                  Add to this the thoughtfully presented documentation, featuring code highlighting, snippets, class customizer explanation and you've got yourself one powerful value package.
-                </p>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12">
+                      <p>
+                        Instrukcija, kaip rašyti diktantą.
+                      </p>
+                      <div class="audio-list">
+                        
+                      {% for sakinys in page.header.sakiniai %}
+                        <div id="audio{{ loop.index }}" class="audio-item">
+                          <div id="play{{ loop.index }}">
+                            <i class="audio__icon icon icon-Start color--primary"></i>
+                            <div class="audio__text">{{ sakinys.sakinys }}{% if sakinys.nauja_pastraipa %} iš naujos eilutės{% endif %}</div>
+                          </div>
+                          <div id="pause{{ loop.index }}" style="display: none;">
+                            <i class="audio__icon icon icon-Pause color--primary"></i>
+                            <div class="audio__text" style="color: #fd7e14">{{ sakinys.sakinys }}{% if sakinys.nauja_pastraipa %} iš naujos eilutės{% endif %}</div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                      
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
               </div>
             </li>
+            {% endif %}
             <li>
               <div class="tab__title">
                 <i class="icon icon--sm block icon-Pen"></i>
-                <span class="h5">Rašykite</span>dfdfd
+                <span class="h5">Rašykite</span>
               </div>
               <div class="tab__content lead">
                 {{ page.content }}

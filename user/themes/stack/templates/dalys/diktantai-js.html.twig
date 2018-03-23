@@ -1,22 +1,51 @@
 $(document).ready(
   function(){
-    var sound = new Howl({
+    var pilnas = new Howl({
       src: ['{{ page.media['diktantas.mp3'].url() }}']
     });
+      
+    var sound = new Howl({
+      src: ['{{ page.media['diktantas.mp3'].url() }}'],
+      sprite: {
+        {% for sakinys in page.header.sakiniai %}
+          'id{{ loop.index }}': [{{ sakinys.pradzia }}, {{ sakinys.pabaiga }}]{% if not loop.last %},{% endif %}
+        {% endfor %}
+      }
+      
+    });
     $('#playBtn').on("click", function(){
-      sound.play();
+      pilnas.play();
       $('#playBtn').hide();
       $('#pauseBtn').show();
-    })
+    });
     $('#pauseBtn').on("click", function(){
-      sound.pause();
+      pilnas.pause();
       $('#pauseBtn').hide();
       $('#playBtn').show();
-    })
-    sound.on("end", function(){
+    });
+    pilnas.on("end", function(){
       $('#pauseBtn').hide();
       $('#playBtn').show();
-    })
+    });
+    
+    {% for sakinys in page.header.sakiniai %}
+      $('#play{{ loop.index }}').on("click", function(){
+        sound.pause();
+        sound.play('id{{ loop.index }}');
+        $('#play{{ loop.index }}').hide();
+        $('#pause{{ loop.index }}').show();
+        $('#audio{{ loop.index }}').css("background-color", "#fcfcfc");
+      });
+      $('#pause{{ loop.index }}').on("click", function(){
+        sound.pause();
+        $('#pause{{ loop.index }}').hide();
+        $('#play{{ loop.index }}').show();
+      });
+      sound.on("end", function(){
+        $('#pause{{ loop.index }}').hide();
+        $('#play{{ loop.index }}').show();
+      });
+    {% endfor %}
 
   }
 )

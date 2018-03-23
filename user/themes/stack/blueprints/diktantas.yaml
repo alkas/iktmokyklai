@@ -1,0 +1,45 @@
+title: Diktantas
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        sprites:
+          type: tab
+          title: Diktanto sakiniai
+          fields:
+            header.sakiniai:
+              name: sakiniai
+              type: list
+              label: Diktanto sakiniai
+              fields:
+                .sakinys:
+                  type: text
+                  label: Tekstas
+                .pradzia:
+                  type: text
+                  size: x-small
+                  label: Sakinio pradžia
+                  help: Sakinio pradžios vieta audio faile milisekundėmis
+                  validate:
+                    type: int
+                    min: 0
+                .pabaiga:
+                  type: text
+                  size: x-small
+                  label: Sakinio pabaiga
+                  help: Sakinio pabaigos vieta audio faile milisekundėmis
+                  validate:
+                    type: int
+                    min: 0
+                .nauja_pastraipa:
+                  type: toggle
+                  label: Ar nauja pastraipa
+                  highlight: 1
+                  default: 0
+                  options:
+                      1: 'Taip'
+                      0: 'Ne'
+                  validate:
+                      type: bool

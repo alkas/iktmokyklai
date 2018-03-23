@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: 'Raidės P, K, T, E, G'
 taxonomy:
     kategorija:
         - diktantai

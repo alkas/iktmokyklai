@@ -9,3 +9,37 @@
 .nav-sidebar-column .logo {
   width: 160px; max-height: 68px; top: 0;
 }
+
+/* mp3 sarasas meniu */
+.audio-list {
+  font-size: 16px;
+  margin: auto;
+  padding: 0.5em 1em;
+}
+.audio-item {
+  display: block;
+  position: relative;
+  padding: 20px 20px 20px 80px;
+  margin: 0 auto;
+  cursor: pointer;
+  border-bottom: solid 1px #ddd;
+}
+.audio-item:last-child {
+  border-bottom: none;
+}
+.audio__text {
+  color: #135156;
+  -webkit-transition: all 0.4s linear 0.4s;
+  transition: all 0.4s linear 0.4s;
+}
+.audio__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  width: 32px;
+  height: auto;
+  margin: auto;
+  font-size: 32px;
+  line-height: 68px;
+}
