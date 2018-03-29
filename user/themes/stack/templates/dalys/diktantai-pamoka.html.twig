@@ -1,20 +1,3 @@
-{% set zodziuSkaicius = content|split(' ')|length %}
-{% set sakiniuSkaicius = content|split('. ')|length + (content|split('! ')|length - 1) + (content|split('? ')|length - 1) %}
-
-<section class="text-center" style="padding-bottom: 3em;">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8 ">
-        <h2>{{ page.title }}</h2>
-        <p class="lead">
-          Žodžių: {{ zodziuSkaicius }}, sakinių: {{ sakiniuSkaicius }}
-        </p>
-      </div>
-    </div>
-    <!--end of row-->
-  </div>
-  <!--end of container-->
-</section>
 <section class="text-center">
   <div class="container">
     <div class="row">

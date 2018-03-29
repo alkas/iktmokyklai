@@ -6,11 +6,17 @@
     {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}
 {% endif %}
 
-{# paantraštė. rodomi žodžių ir sakinių skaičiai #}
-{% set zodziu = page.content|split(' ')|length %}
-{% set sakiniu = page.content|split('. ')|length + (page.content|split('! ')|length - 1) + (page.content|split('? ')|length - 1) %}
+{# jei diktantai, tai antraštėje rodomi žodžių ir sakinių skaičiai #}
+{% if page.url|split("/")[1] == 'diktantai' %}
+  {% set zodziu = content|split(' ')|length %}
+  {% set sakiniu = content|split('. ')|length + (content|split('! ')|length - 1) + (content|split('? ')|length - 1) %}
+  {% set tekstas = "Žodžių: " ~ zodziu ~ ", sakinių: " ~ sakiniu %}
+{% else %}
+  {% if page.content %}
+    {% set tekstas = page.content|striptags %}
+  {% endif %}
+{% endif %}
 
-{# blokai #}
 {% block navigacija %}
   {% if not (grav.uri.param('be-meniu')) and not (config.site.hidesidebaronblogpages.enabled) and not (page.parent.header.hide_sidebar) %}
     {% include 'dalys/meniu-soninis.html.twig' %}
@@ -19,7 +25,7 @@
 
 {% block turinys %}
   {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
-  {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: "Žodžių: " ~ zodziu ~ ", sakinių: " ~ sakiniu} %}
+  {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: tekstas} %}
   
   {% include 'dalys/diktantai-pamoka.html.twig' %}
 {% endblock %}

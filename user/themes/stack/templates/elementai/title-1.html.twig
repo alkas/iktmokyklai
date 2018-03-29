@@ -1,0 +1,27 @@
+{% if stilius == 'light' %}
+  <section class="space--{{ dydis }}">
+{% elseif stilius == 'medium' %}
+  <section class="bg--secondary space--{{ dydis }}">
+{% elseif stilius == 'dark' %}
+  <section class="bg--dark space--{{ dydis }}">
+{% elseif stilius == 'primary' %}
+  <section class="bg--primary space--{{ dydis }}">
+{% elseif stilius == 'image' %}
+  <section class="imagebg space--{{ dydis }}" data-overlay='4'>
+    <div class="background-image-holder">
+      <img alt="background" src="{{ url('theme://img/hero-2.jpg') }}" />
+    </div>
+{% else %}
+  <section>
+{% endif %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <h1>{{ page.title }}</h1>
+        </div>
+      </div>
+      <!--end of row-->
+    </div>
+    <!--end of container-->
+  </section>

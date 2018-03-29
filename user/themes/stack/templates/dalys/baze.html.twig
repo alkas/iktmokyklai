@@ -16,17 +16,18 @@
     <link rel="icon" type="image/png" href="{{ url('theme://images/iktmokyklai_96x96.png') }}" sizes="96x96" />
         
   {% block stylesheets %}
-    {% do assets.addCss('theme://css/bootstrap.css', 110) %}
-    {% do assets.addCss('theme://css/stack-interface.css', 109) %}
-    {% do assets.addCss('theme://css/socicon.css', 108) %}
-    {% do assets.addCss('theme://css/lightbox.min.css', 107) %}
-    {% do assets.addCss('theme://css/flickity.css', 106) %}
-    {% do assets.addCss('theme://css/iconsmind.css', 105) %}
-    {% do assets.addCss('theme://css/jquery.steps.css', 104) %}
-    {% do assets.addCss('theme://css/theme.css', 103) %}
-    {% do assets.addCss('theme://css/custom.css', 102) %}
-    {% do assets.addCss('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i', 101) %}
-    {% do assets.addCss('https://fonts.googleapis.com/icon?family=Material+Icons', 100) %}
+    {#{% do assets.addCss('theme://css/bootstrap.css', 110) %}#}
+    {% do assets.addCss('bootstrap') %}
+    {% do assets.addCss('theme://css/stack-interface.css') %}
+    {% do assets.addCss('theme://css/socicon.css') %}
+    {% do assets.addCss('lightbox') %}
+    {% do assets.addCss('flickity') %}
+    {% do assets.addCss('theme://css/iconsmind.css') %}
+    {% do assets.addCss('steps') %}
+    {% do assets.addCss('theme://css/theme.css') %}
+    {% do assets.addCss('theme://css/custom.css') %}
+    {% do assets.addCss('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i') %}
+    {% do assets.addCss('https://fonts.googleapis.com/icon?family=Material+Icons') %}
   {% endblock %}
   {{ assets.css() }}
 

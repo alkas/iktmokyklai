@@ -105,7 +105,30 @@ assets:
   js_minify: true
   enable_asset_timestamp: false
   collections:
-    jquery: 'system://assets/jquery/jquery-2.x.min.js'
+    jquery: 'theme://js/jquery-3.1.1.min.js'
+    bootstrap:
+      - 'theme://css/bootstrap.css'
+    flickity:
+      - 'theme://js/flickity.min.js'
+      - 'theme://css/flickity.css'
+    easypiechart: 'theme://js/easypiechart.min.js'
+    parallax: 'theme://js/parallax.js'
+    typed: 'theme://js/typed.min.js'
+    datepicker: 'theme://js/datepicker.js'
+    isotope: 'theme://js/isotope.min.js'
+    ytplayer: 'theme://js/ytplayer.min.js'
+    lightbox:
+      - 'theme://js/lightbox.min.js'
+      - 'theme://css/lightbox.min.css'
+    granim: 'theme://js/granim.min.js'
+    steps:
+      - 'theme://js/jquery.steps.min.js'
+      - 'theme://css/jquery.steps.css'
+    countdown: 'theme://js/countdown.min.js'
+    twitterfetcher: 'theme://js/twitterfetcher.min.js'
+    spectragram: 'theme://js/spectragram.min.js'
+    smooth-scroll: 'theme://js/smooth-scroll.min.js'
+    howler: 'theme://js/howler.core.min.js'
 errors:
   display: '1'
   log: true

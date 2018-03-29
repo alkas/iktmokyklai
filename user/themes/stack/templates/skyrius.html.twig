@@ -1,9 +1,13 @@
-{% extends 'diktantas.html.twig' %}
+{# extends 'diktantas.html.twig' #}
+{% extends 'tema.html.twig' %}
 
 {% block turinys %}
-	<div id="chapter">
+	{# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
+  {% include 'elementai/title-1.html.twig' with {stilius: 'medium', dydis: 'sm'} %}
+  
+	<section id="chapter">
     	<div id="body-inner">
 			{{ page.content }}
 		</div>
-    </div>
+    </section>
 {% endblock %}

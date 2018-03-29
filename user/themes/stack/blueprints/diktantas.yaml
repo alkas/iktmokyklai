@@ -2,12 +2,16 @@ title: Diktantas
 '@extends': default
 
 form:
+  
   fields:
+    
     tabs:
+      
       fields:
         sprites:
           type: tab
           title: Diktanto sakiniai
+          
           fields:
             header.sakiniai:
               name: sakiniai
