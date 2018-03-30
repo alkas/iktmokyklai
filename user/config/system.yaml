@@ -105,9 +105,8 @@ assets:
   js_minify: true
   enable_asset_timestamp: false
   collections:
-    jquery-js:
-      - 'system://assets/jquery/jquery-2.1.4.min.js'
-      - 'theme://js/jquery-3.1.1.min.js'
+    jquery: 'system://assets/jquery/jquery-2.x.min.js'
+    jquery3: 'theme://js/jquery-3.1.1.min.js'
     bootstrap-css: 'theme://css/bootstrap.css'
     flickity-js: 'theme://js/flickity.min.js'
     flickity-css: 'theme://css/flickity.css'
