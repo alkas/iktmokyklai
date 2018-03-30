@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+  <title>Progressively Drawing an SVG Path to Canvas</title>
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+	<style type="text/css">
+		html,body { margin:0; padding:0; height:100%; overflow:hidden; }
+    p { text-align:center; font-style:italic; margin:1em; }
+    #sliderWrapper { margin-top:40px; }
+		#slider { width:300px; margin-bottom:20px; }
+    svg { margin: 40px; }
+    .kiwi { stroke-linecap: round; }
+  </style>
+  
+
+</head><body>
+
+
+<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="40px" y="40px" width="650px" height="520px" viewBox="0 60.326 612 502.174" enable-background="new 0 65.326 612 502.174" xml:space="preserve" class="logo">
+
+  <path class="kiwi" stroke-width="5"  d="M210.333,65.331C104.367,66.105-12.349,150.637,1.056,276.449c4.303,40.393,18.533,63.704,52.171,79.03
+  c36.307,16.544,57.022,54.556,50.406,112.954c-9.935,4.88-17.405,11.031-19.132,20.015c7.531-0.17,14.943-0.312,22.59,4.341
+  c20.333,12.375,31.296,27.363,42.979,51.72c1.714,3.572,8.192,2.849,8.312-3.078c0.17-8.467-1.856-17.454-5.226-26.933
+  c-2.955-8.313,3.059-7.985,6.917-6.106c6.399,3.115,16.334,9.43,30.39,13.098c5.392,1.407,5.995-3.877,5.224-6.991
+  c-1.864-7.522-11.009-10.862-24.519-19.229c-4.82-2.984-0.927-9.736,5.168-8.351l20.234,2.415c3.359,0.763,4.555-6.114,0.882-7.875
+  c-14.198-6.804-28.897-10.098-53.864-7.799c-11.617-29.265-29.811-61.617-15.674-81.681c12.639-17.938,31.216-20.74,39.147,43.489
+  c-5.002,3.107-11.215,5.031-11.332,13.024c7.201-2.845,11.207-1.399,14.791,0c17.912,6.998,35.462,21.826,52.982,37.309
+  c3.739,3.303,8.413-1.718,6.991-6.034c-2.138-6.494-8.053-10.659-14.791-20.016c-3.239-4.495,5.03-7.045,10.886-6.876
+  c13.849,0.396,22.886,8.268,35.177,11.218c4.483,1.076,9.741-1.964,6.917-6.917c-3.472-6.085-13.015-9.124-19.18-13.413
+  c-4.357-3.029-3.025-7.132,2.697-6.602c3.905,0.361,8.478,2.271,13.908,1.767c9.946-0.925,7.717-7.169-0.883-9.566
+  c-19.036-5.304-39.891-6.311-61.665-5.225c-43.837-8.358-31.554-84.887,0-90.363c29.571-5.132,62.966-13.339,99.928-32.156
+  c32.668-5.429,64.835-12.446,92.939-33.85c48.106-14.469,111.903,16.113,204.241,149.695c3.926,5.681,15.819,9.94,9.524-6.351
+  c-15.893-41.125-68.176-93.328-92.13-132.085c-24.581-39.774-14.34-61.243-39.957-91.247
+  c-21.326-24.978-47.502-25.803-77.339-17.365c-23.461,6.634-39.234-7.117-52.98-31.273C318.42,87.525,265.838,64.927,210.333,65.331
+  z M445.731,203.01c6.12,0,11.112,4.919,11.112,11.038c0,6.119-4.994,11.111-11.112,11.111s-11.038-4.994-11.038-11.111
+  C434.693,207.929,439.613,203.01,445.731,203.01z"/>
+  <filter id="pictureFilter" >
+    <feGaussianBlur stdDeviation="0" />
+  </filter>
+</svg>  -->
+<!-- <svg id="kiwi" xmlns="http://www.w3.org/2000/svg" x="40px" y="40px" width="650px" height="520px" viewBox="0 0 100 100">
+  <path d="M3,15 l10,0 V27 H23 v10 h10
+           C33,43 38,47 43,47 c0,5 5,10 10,10
+           S63,67 63,67       s-10,10 10,10
+           Q50,50 73,57       q20,-5 0,-10
+           T70,40             t0,-15
+           A5,5 45 1 0 40,20  a5,5 20 0 1 -10,-10
+           Z" />
+  <g id="duplicate"/>
+  </svg> -->
+
+  <div id="anime">
+  <svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+    <!-- <g>
+     <title>background</title>
+     <rect fill="#fff" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+     <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+      <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+     </g>
+    </g> -->
+    <g id="a">
+      <path d="m85.5,303.5c0,0 0.173096,0.852722 1,2c1.307449,1.813995 2,3 3,6c1,3 2.679634,5.025818 3,7c0.506538,3.121429 1.91761,3.386871 3,6c0.382683,0.923889 1,2 2,3c1,1 1.296997,4.613831 4,7c1.676331,1.479828 3.693436,3.458801 5,4c1.847755,0.765381 2.386871,1.917603 5,3c2.771637,1.148041 5.042908,0.710205 6,1c3.450844,1.04483 7.025826,2.679626 9,3c3.121445,0.506531 4,1 6,1c6,0 12,1 15,1c4,0 12,0 13,0c1,0 2.611038,0.07193 5,-2c1.68924,-1.465088 2.60083,-2.255768 4,-4c2.579941,-3.216187 3.103409,-5.906342 4,-7c2.285873,-2.78833 2.692551,-4.186005 4,-6c2.480713,-3.441803 4.367538,-6.102631 5,-8c1.581146,-4.743408 5.486252,-8.823761 6,-11c0.229752,-0.973236 4.190277,-6.881531 6,-10c2.24469,-3.867981 4.789856,-10.07843 6,-13c0.855713,-2.065857 3.116898,-5.967651 5,-13c1.066498,-3.982788 3.981628,-6.712006 5,-12c0.567322,-2.945862 3.654556,-6.784225 6,-15c1.39975,-4.903137 2.11586,-7.963837 3,-11c1.152771,-3.958679 3.798615,-10.044525 5,-15c1.715271,-7.07515 4.459778,-13.842346 7,-22c4.903366,-15.746643 6.11586,-17.963837 7,-21c1.152771,-3.958679 4.324219,-8.885803 7,-17c2.279953,-6.913879 3.316956,-14.301071 8,-24c3.505554,-7.260239 5.345184,-10.176971 7,-15c2.177063,-6.345108 10.49295,-22.234009 13,-27c1.678558,-3.190994 4.432892,-6.802429 7,-13c1.210144,-2.921562 3,-6 4,-9c1,-3 2,-7 4,-9c1,-1 0.292908,-3.292892 1,-4c0.707092,-0.707108 2.31073,-3.080254 3,-6c0.513733,-2.17625 3,-6 4,-9c1,-3 0.292908,-4.292892 1,-5c0.707092,-0.707108 0.292908,-1.292892 1,-2c0.707092,-0.707108 1.458801,-1.693436 2,-3c0.38269,-0.923878 0.292908,-2.707108 1,-2c0.707092,0.707108 0,3 0,5c0,2 -0.993988,11.835506 -2,21c-0.654694,5.964172 0,8 0,13c0,2 4.731598,5.840416 -2,30c-1.200348,4.308037 -4,9 -4,15c0,3 -1.494873,6.813889 -3,25c-0.329926,3.986374 -0.497559,9.925797 -1,15c-0.492676,4.975662 0,10 0,13c0,5 0,8 0,12c0,5 0,7 0,12c0,8 1.121277,15.090393 0,22c-0.506531,3.121445 -2,13 -2,16c0,2 0,5 0,8c0,4 0,10 0,13c0,6 0,11 0,18c0,4 0,6 0,11c0,4 0,7 0,12c0,3 -0.707092,6.292908 0,7c0.707092,0.707092 1.486267,0.823761 2,3c0.68927,2.919739 1.486267,3.823761 2,6c0.229767,0.973236 0.292908,3.292908 1,4c0.707092,0.707092 0.234619,1.152252 1,3c0.541199,1.306549 0.693451,2.458801 2,3c0.923889,0.38269 1.692535,2.186005 3,4c0.826904,1.147278 2.917603,3.386871 4,6c0.38269,0.923889 -0.178925,4.298706 3,6c0.881683,0.471863 1,2 1,3c0,1 1,3 2,4c2,2 3,3 4,4c1,1 2,1 3,2c1,1 2.076111,1.61731 3,2c1.306549,0.541199 2.186005,0.692535 4,2c1.147278,0.826904 5.080261,1.31073 8,2c4.352509,1.027496 6,2 9,2c2,0 3,0 4,0c1,0 3.076111,0.38269 4,0c3.919678,-1.623596 2.693451,-4.458801 4,-5c0.923889,-0.38269 2,-1 4,-2c2,-1 2.823761,-2.486267 5,-3c1.946503,-0.459503 3,0 5,0c1,0 1.386871,-0.917603 4,-2c1.847748,-0.765381 5.558197,-2.519287 9,-5c3.627991,-2.614899 6.292908,-3.292908 7,-4c0.707092,-0.707092 1.824432,-0.0979 3,-2c0.525726,-0.850647 1,-3 1,-4c0,-1 1.458801,-0.693451 2,-2c0.765381,-1.847748 0.31073,-3.080261 1,-6c0.513733,-2.176239 2,-4 2,-5c0,-1 -0.307465,-2.186005 1,-4c0.826904,-1.147278 2.292908,-2.292908 3,-3c1.414215,-1.414215 0.692535,-2.186005 2,-4c0.826904,-1.147278 1,-2 1,-3c0,-1 1,-3 1,-4l0,-1l0,-1" id="svg_1" class="raide" stroke-width="11.5" stroke="#000" fill="none"/>
+     <path d="m194.5,198.5c0,0 2,0 3,0c2,0 3,0 4,0c4,0 8,0 14,0c6,0 10.878555,-1.493454 14,-2c0.987091,-0.160187 3,0 5,0c3,0 4,0 6,0c4,0 7,0 11,0c3,0 4,0 5,0c1,0 2,0 3,0c1,0 2,0 6,0c1,0 5,0 8,0c3,0 5,0 6,0c1,0 2,0 3,0c3,0 7,0 12,0c5,0 7,0 8,0c1,0 2,0 3,0c1,0 1.693451,0.458801 3,1c1.847748,0.765366 4,0 7,0c1,0 2,0 3,0l1,0l1,0l1,0" id="svg_2" class="raide" stroke-width="11.5" stroke="#000" fill="none"/>
+    <!-- </g> -->
+   </svg>
+   </div>
+
+   <div id="sliderWrapper">
+      <div id="slider" class="ui-slider ui-slider-horizontal ui-wiget ui-wiget-content ui-corner-all">
+        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+      </div>
+  </div>
+  <div>
+    <button id="play">play</button> 
+    <button id="reverse">reverse</button>
+    <button id="pause">pause</button>
+    <button id="resume">resume</button> 
+  </div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script> 
+<script src="greensock-js/src/minified/TweenMax.min.js" type="text/javascript"></script>
+
+<script>
+  var svgKonteineris = document.getElementById("anime");
+  var ns = "http://www.w3.org/2000/svg";
+  var tl = new TimelineMax({onUpdate:function(){updateSlider()}});
+  
+  tl.pause();
+
+  var svgPaths = svgKonteineris.getElementsByTagNameNS(ns, "path");
+
+  for (var i = 0; i < svgPaths.length; i++){
+    //select path
+    var kelias = svgPaths[i];
+    // get pixel length of the svg path
+    var kelioIlgis = kelias.getTotalLength();
+    // apply styles to stroke-dasharray and stroke-dashoffset
+    kelias.style.strokeDasharray = kelioIlgis+" "+kelioIlgis;
+    kelias.style.strokeDashoffset = kelioIlgis;
+    tl.add(TweenMax.to(kelias.style, 1, {strokeDashoffset:0, delay:(i>0)?"0.2":"0"}, (i>0)?"":""));
+  }
+
+  $("#slider").slider({
+    range: false,
+    min: 0,
+    max: 100,
+    step: 0.1,
+    slide: function(event, ui) {
+      tl.pause();
+      tl.progress(ui.value/100);
+    }
+  });
+
+  function updateSlider() {
+    $("#slider").slider("value", tl.progress()*100);
+  }
+
+  $("#play").click(function() {
+    tl.play();
+    if(tl.progress() === 1){
+      tl.restart();
+    }
+  });
+
+</script>
+
+<!-- <script>
+  var orig = document.querySelector('#svg_2'), length, timer;
+  var obj = {length:0, pathLength:orig.getTotalLength()};
+
+  //orig.style.stroke = '#f60';
+
+  var t = TweenMax.to(obj, 3, {length:obj.pathLength, paused:true, onUpdate:drawLine, ease:Linear.easeNone});
+
+  function drawLine() {
+    orig.style.strokeDasharray = [obj.length,obj.pathLength].join(' ');
+    updateSlider();
+  }
+
+  $("#slider").slider({
+    range: false,
+    min: 0,
+    max: 100,
+    step: 0.1,
+    slide: function(event, ui) {
+      t.pause();
+      t.progress(ui.value/100);
+    }
+  });
+  function updateSlider() {
+    $("#slider").slider("value", t.progress()*100);
+  }
+  $("#play").click(function() {
+    t.play();
+    if(t.progress() === 1){
+      t.restart();
+    }
+  });
+  $("#pause").click(function() {
+    t.pause();
+  });
+  $("#reverse").click(function() {
+    t.reverse();
+  });
+  $("#resume").click(function() {
+		t.resume();	
+  });
+
+</script> -->
+
+</body></html>

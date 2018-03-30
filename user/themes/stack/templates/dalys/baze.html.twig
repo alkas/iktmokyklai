@@ -16,14 +16,13 @@
     <link rel="icon" type="image/png" href="{{ url('theme://images/iktmokyklai_96x96.png') }}" sizes="96x96" />
         
   {% block stylesheets %}
-    {#{% do assets.addCss('theme://css/bootstrap.css', 110) %}#}
-    {% do assets.addCss('bootstrap') %}
+    {% do assets.addCss('bootstrap-css') %}
     {% do assets.addCss('theme://css/stack-interface.css') %}
     {% do assets.addCss('theme://css/socicon.css') %}
-    {% do assets.addCss('lightbox') %}
-    {% do assets.addCss('flickity') %}
+    {#{% do assets.addCss('lightbox-css') %}#}
+    {% do assets.addCss('flickity-css') %}
     {% do assets.addCss('theme://css/iconsmind.css') %}
-    {% do assets.addCss('steps') %}
+    {#{% do assets.addCss('steps-css') %}#}
     {% do assets.addCss('theme://css/theme.css') %}
     {% do assets.addCss('theme://css/custom.css') %}
     {% do assets.addCss('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i') %}
@@ -32,24 +31,23 @@
   {{ assets.css() }}
 
   {% block javascripts %}
-    {% do assets.addJs('theme://js/jquery-3.1.1.min.js', {'priority':115, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/flickity.min.js', {'priority':114, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/easypiechart.min.js', {'priority':113, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/parallax.js', {'priority':112, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/typed.min.js', {'priority':111, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/datepicker.js', {'priority':110, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/isotope.min.js', {'priority':109, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/ytplayer.min.js', {'priority':108, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/lightbox.min.js', {'priority':107, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/granim.min.js', {'priority':106, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/jquery.steps.min.js', {'priority':105, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/countdown.min.js', {'priority':104, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/twitterfetcher.min.js', {'priority':103, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/spectragram.min.js', {'priority':102, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/smooth-scroll.min.js', {'priority':101, 'group':'bottom'}) %}
-    {% do assets.addJs('theme://js/scripts.js', {'priority':100, 'group':'bottom'}) %}
+    {% do assets.addJs('jquery-js') %}
+    {% do assets.addJs('flickity-js') %}
+    {#{% do assets.addJs('easypiechart-js') %}#}
+    {#{% do assets.addJs('parallax-js') %}#}
+    {#{% do assets.addJs('typed-js') %}#}
+    {#{% do assets.addJs('datepicker-js') %}#}
+    {% do assets.addJs('isotope-js') %}
+    {#{% do assets.addJs('ytplayer-js') %}#}
+    {#{% do assets.addJs('lightbox-js') %}#}
+    {% do assets.addJs('granim-js') %}
+    {#{% do assets.addJs('steps-js') %}#}
+    {#{% do assets.addJs('countdown-js') %}#}
+    {#{% do assets.addJs('twitterfetcher-js') %}#}
+    {#{% do assets.addJs('spectragram-js') %}#}
+    {% do assets.addJs('smooth-scroll-js') %}
+    {% do assets.addJs('theme://js/scripts.js') %}
   {% endblock %}
-  {{ assets.js() }}
 
 {% endblock head %}
 </head>
@@ -74,9 +72,8 @@
   <a class="back-to-top inner-link" href="#start" data-scroll-class="100vh:active">
       <i class="stack-interface stack-up-open-big"></i>
   </a>
-  {{ assets.js('bottom') }}
-
   
+  {{ assets.js() }}
   {% block skriptas %}{% endblock %}
   
   </body>

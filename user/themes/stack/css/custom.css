@@ -10,6 +10,13 @@
   width: 160px; max-height: 68px; top: 0;
 }
 
+/* tekstas  */
+article .article__body p, article .article__body ul, article .article__body h5, .article__body h4, .article__body h3, .article__body h2 {
+  max-width: 762px;
+  margin: 0 auto;
+  padding: 0 16px 0 16px;
+}
+
 /* mp3 sarasas meniu */
 .audio-list {
   font-size: 16px;

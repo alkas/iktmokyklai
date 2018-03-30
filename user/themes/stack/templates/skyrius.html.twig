@@ -1,13 +1,37 @@
 {# extends 'diktantas.html.twig' #}
-{% extends 'tema.html.twig' %}
+{% extends 'dalys/baze.html.twig' %}
+
+{% block navigacija %}
+  {% if not (grav.uri.param('be-meniu')) and not (config.site.hidesidebaronblogpages.enabled) and not (page.parent.header.hide_sidebar) %}
+    {% include 'dalys/meniu-soninis.html.twig' %}
+  {% endif %}
+{% endblock %}
 
 {% block turinys %}
 	{# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
-  {% include 'elementai/title-1.html.twig' with {stilius: 'medium', dydis: 'sm'} %}
+  {% include 'elementai/title-section-1.html.twig' with {stilius: 'medium', dydis: 'sm', lead: tekstas} %}
   
-	<section id="chapter">
-    	<div id="body-inner">
-			{{ page.content }}
+	<section>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-12">
+          <article>
+          	<div class="article__body">
+							{{ page.content }}
+						</div>
+					</article>
+					<!--end item-->
+				</div>
+			</div>
+			<!--end of row-->
 		</div>
-    </section>
+		<!--end of container-->
+  </section>
+  
+{% endblock %}
+
+{% block padas %}{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
 {% endblock %}

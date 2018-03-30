@@ -105,30 +105,28 @@ assets:
   js_minify: true
   enable_asset_timestamp: false
   collections:
-    jquery: 'theme://js/jquery-3.1.1.min.js'
-    bootstrap:
-      - 'theme://css/bootstrap.css'
-    flickity:
-      - 'theme://js/flickity.min.js'
-      - 'theme://css/flickity.css'
-    easypiechart: 'theme://js/easypiechart.min.js'
-    parallax: 'theme://js/parallax.js'
-    typed: 'theme://js/typed.min.js'
-    datepicker: 'theme://js/datepicker.js'
-    isotope: 'theme://js/isotope.min.js'
-    ytplayer: 'theme://js/ytplayer.min.js'
-    lightbox:
-      - 'theme://js/lightbox.min.js'
-      - 'theme://css/lightbox.min.css'
-    granim: 'theme://js/granim.min.js'
-    steps:
-      - 'theme://js/jquery.steps.min.js'
-      - 'theme://css/jquery.steps.css'
-    countdown: 'theme://js/countdown.min.js'
-    twitterfetcher: 'theme://js/twitterfetcher.min.js'
-    spectragram: 'theme://js/spectragram.min.js'
-    smooth-scroll: 'theme://js/smooth-scroll.min.js'
-    howler: 'theme://js/howler.core.min.js'
+    jquery-js:
+      - 'system://assets/jquery/jquery-2.1.4.min.js'
+      - 'theme://js/jquery-3.1.1.min.js'
+    bootstrap-css: 'theme://css/bootstrap.css'
+    flickity-js: 'theme://js/flickity.min.js'
+    flickity-css: 'theme://css/flickity.css'
+    easypiechart-js: 'theme://js/easypiechart.min.js'
+    parallax-js: 'theme://js/parallax.js'
+    typed-js: 'theme://js/typed.min.js'
+    datepicker-js: 'theme://js/datepicker.js'
+    isotope-js: 'theme://js/isotope.min.js'
+    ytplayer-js: 'theme://js/ytplayer.min.js'
+    lightbox-js: 'theme://js/lightbox.min.js'
+    lightbox-css: 'theme://css/lightbox.min.css'
+    granim-js: 'theme://js/granim.min.js'
+    steps-js: 'theme://js/jquery.steps.min.js'
+    steps-css: 'theme://css/jquery.steps.css'
+    countdown-js: 'theme://js/countdown.min.js'
+    twitterfetcher-js: 'theme://js/twitterfetcher.min.js'
+    spectragram-js: 'theme://js/spectragram.min.js'
+    smooth-scroll-js: 'theme://js/smooth-scroll.min.js'
+    howler-js: 'theme://js/howler.core.min.js'
 errors:
   display: '1'
   log: true

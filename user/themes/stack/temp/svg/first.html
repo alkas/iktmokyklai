@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+	<title>Progressively Drawing an SVG Path to Canvas</title>
+	<style type="text/css">
+		html,body { margin:0; padding:0; height:100%; overflow:hidden; }
+		p { text-align:center; font-style:italic; margin:1em; }
+		path { fill:#eee; stroke:none }
+		svg { height:80%;}
+	</style>
+</head><body>
+<p>Mouse over the path to see it progressively 'drawn' by altering the <code>stroke-dasharray</code>. Built to support <a href="http://stackoverflow.com/a/14282391/405017">this Stack Overflow answer</a>.</p>
+<div id="graphics">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<path d="M3,15 l10,0 V27 H23 v10 h10
+         C33,43 38,47 43,47 c0,5 5,10 10,10
+         S63,67 63,67       s-10,10 10,10
+         Q50,50 73,57       q20,-5 0,-10
+         T70,40             t0,-15
+         A5,5 45 1 0 40,20  a5,5 20 0 1 -10,-10
+         Z" />
+<g id="duplicate"/>
+</svg>
+</div>
+<p>Code copyright ©2013 Gavin Kistner; permission granted to freely use.</p>
+<script type="text/javascript">
+var distancePerPoint = 1;
+var drawFPS          = 60;
+
+var orig = document.querySelector('path'), length, timer;
+orig.addEventListener('mouseover',startDrawingPath,false);
+orig.addEventListener('mouseout', stopDrawingPath, false);
+
+function startDrawingPath(){
+	length = 0;
+	orig.style.stroke = '#f60';
+	timer = setInterval(increaseLength,1000/drawFPS);
+}
+
+function increaseLength(){
+	var pathLength = orig.getTotalLength();
+	length += distancePerPoint;
+	orig.style.strokeDasharray = [length,pathLength].join(' ');
+	if (length >= pathLength) clearInterval(timer);
+}
+
+function stopDrawingPath(){
+	clearInterval(timer);
+	orig.style.stroke = '';
+}
+
+</script>
+</body></html>

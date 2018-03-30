@@ -1,10 +1,10 @@
 {% extends 'dalys/baze.html.twig' %}
-{% set tags = page.taxonomy.tag %}
-{% if tags %}
-    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}
-{% else %}
-    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}
-{% endif %}
+{#{% set tags = page.taxonomy.tag %}#}
+{#{% if tags %}#}
+{#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
+{#{% else %}#}
+{#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
+{#{% endif %}#}
 
 {# paantraštė. rodomi žodžių ir sakinių skaičiai #}
 {% set zodziu = page.content|split(' ')|length %}
@@ -24,14 +24,15 @@
   {% include 'dalys/diktantai-pamoka.html.twig' %}
 {% endblock %}
 
+{% block padas %}{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
-    {% do assets.addJs('theme://js/howler.core.min.js', {'priority':115, 'group':'bottom'}) %}
+    {% do assets.addJs('howler-js') %}
 {% endblock %}
 
 {% block skriptas %}
-    <script>
-            {% include 'dalys/diktantai-js.html.twig' %}
-    
-</script>
+  <script>
+    {% include 'dalys/diktantai-js.html.twig' %}
+  </script>
 {% endblock %}

@@ -1,21 +1,14 @@
 {% extends 'dalys/baze.html.twig' %}
-{% set tags = page.taxonomy.tag %}
-{% if tags %}
-    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}
-{% else %}
-    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}
-{% endif %}
+{#{% set tags = page.taxonomy.tag %}#}
+{#{% if tags %}#}
+{#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
+{#{% else %}#}
+{#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
+{#{% endif %}#}
 
-{# jei diktantai, tai antraštėje rodomi žodžių ir sakinių skaičiai #}
-{% if page.url|split("/")[1] == 'diktantai' %}
-  {% set zodziu = content|split(' ')|length %}
-  {% set sakiniu = content|split('. ')|length + (content|split('! ')|length - 1) + (content|split('? ')|length - 1) %}
-  {% set tekstas = "Žodžių: " ~ zodziu ~ ", sakinių: " ~ sakiniu %}
-{% else %}
-  {% if page.content %}
-    {% set tekstas = page.content|striptags %}
-  {% endif %}
-{% endif %}
+{# jei diktantai, tai antraštėje rodomi žodžių ir sakinių skaičiai. formuojamas temos adresas #}
+{% set skyrius = page.url|split("/")[1] %}
+{% set tekstas = page.header.lead|striptags %}
 
 {% block navigacija %}
   {% if not (grav.uri.param('be-meniu')) and not (config.site.hidesidebaronblogpages.enabled) and not (page.parent.header.hide_sidebar) %}
@@ -27,17 +20,14 @@
   {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
   {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: tekstas} %}
   
-  {% include 'dalys/diktantai-pamoka.html.twig' %}
+  {% include 'dalys/' ~ skyrius ~ '-pamoka.html.twig' %}
+  
 {% endblock %}
+
+{% block padas %}{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {% do assets.addJs('theme://js/howler.core.min.js', {'priority':115, 'group':'bottom'}) %}
 {% endblock %}
 
-{% block skriptas %}
-    <script>
-            {% include 'dalys/diktantai-js.html.twig' %}
-    
-</script>
-{% endblock %}
+{% block skriptas %}{% endblock %}

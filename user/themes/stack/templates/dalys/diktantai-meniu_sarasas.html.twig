@@ -36,28 +36,6 @@
     </h5>
 {% endmacro %}
 
-<div class="scrollbar-inner">
-  <div class="highlightable">
-    {% if theme_config.top_level_version %}
-      {% for slug, ver in pages.children %}
-        {{ _self.version(ver) }}
-        <ul id="{{ slug }}" class="topics">
-          {{ _self.loop(ver, '') }}
-        </ul>
-      {% endfor %}
-    {% else %}
-      <ul class="topics">
-        {{ _self.loop(page.find(pradinis_adresas), '') }}
-      </ul>
-    {% endif %}
-    <hr />
-
-    <a class="padding" href="#" data-clear-history-toggle>
-      <i class="fa fa-fw fa-history"></i> Išvalyti istoriją
-    </a><br/>
-
-    <section id="footer">
-      <p>{{ 'THEME_LEARN2_BUILT_WITH_GRAV'|t }}</p>
-    </section>
-  </div>
-</div>
+<ul class="menu-vertical">
+  {{ _self.loop(page.find(pradinis_adresas), '') }}
+</ul>
