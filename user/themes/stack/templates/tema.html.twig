@@ -6,9 +6,12 @@
 {#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
 {#{% endif %}#}
 
-{# jei diktantai, tai antraštėje rodomi žodžių ir sakinių skaičiai. formuojamas temos adresas #}
-{% set skyrius = page.url|split("/")[1] %}
-{% set tekstas = page.header.lead|striptags %}
+{% if page.url|split("/")[1] == "iktmokyklai" %}
+  {% set skyrius = page.url|split("/")[2] %}
+{% else %}
+  {% set skyrius = page.url|split("/")[1] %}
+{% endif %}
+
 
 {% block navigacija %}
   {% if not (grav.uri.param('be-meniu')) and not (config.site.hidesidebaronblogpages.enabled) and not (page.parent.header.hide_sidebar) %}
@@ -18,7 +21,7 @@
 
 {% block turinys %}
   {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
-  {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: tekstas} %}
+  {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: page.header.lead|striptags} %}
   
   {% include 'dalys/' ~ skyrius ~ '-pamoka.html.twig' %}
   

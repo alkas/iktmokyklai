@@ -1,4 +1,10 @@
-{% set pradinis_adresas = "/" ~ page.url|split("/")[1] %}
+{% if page.url|split("/")[1] == "iktmokyklai" %}
+  {% set skyrius = page.url|split("/")[2] %}
+{% else %}
+  {% set skyrius = page.url|split("/")[1] %}
+{% endif %}
+
+{% set pradinis_adresas = "/" ~ skyrius %}
 
 {% macro loop(page, parent_loop) %}
     {% if parent_loop|length > 0 %}
@@ -37,5 +43,6 @@
 {% endmacro %}
 
 <ul class="menu-vertical">
+    <li>{{ pradinis_adresas }}</li>
   {{ _self.loop(page.find(pradinis_adresas), '') }}
 </ul>
