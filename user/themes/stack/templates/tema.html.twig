@@ -1,10 +1,14 @@
 {% extends 'dalys/baze.html.twig' %}
-{#{% set tags = page.taxonomy.tag %}#}
+{% set raide = page.taxonomy.kategorija[0] %}
+
+
+
 {#{% if tags %}#}
 {#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
 {#{% else %}#}
 {#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
 {#{% endif %}#}
+
 
 {% if page.url|split("/")[1] == "iktmokyklai" %}
   {% set skyrius = page.url|split("/")[2] %}
@@ -12,6 +16,10 @@
   {% set skyrius = page.url|split("/")[1] %}
 {% endif %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  {% do assets.addCss('jquery-ui-css') %}
+{% endblock %}
 
 {% block navigacija %}
   {% if not (grav.uri.param('be-meniu')) and not (config.site.hidesidebaronblogpages.enabled) and not (page.parent.header.hide_sidebar) %}
@@ -23,7 +31,24 @@
   {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
   {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: page.header.lead|striptags} %}
   
-  {% include 'dalys/' ~ skyrius ~ '-pamoka.html.twig' %}
+  {{ raide }}
+  
+  {#{% set kolekcija = page.collection({'items':{'@page': '/dailyrastis/typo'}}) %}#}
+  {% set kolekcija = page.collection({'items':{'@taxonomy':{'zyma': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
+  
+  {% for k in kolekcija %}
+    {% set id = raide ~ loop.index %}
+    <section class="{% if loop.index is divisibleby(2) %}switchable {% endif %}feature-large">
+      <div class="container">
+        {% include 'dalys/svg.html.twig' with {'page':k, 'id': id} %}
+      </div>
+    </section>
+    <hr>
+  {% endfor %}
+  
+  
+  {#{% include 'partials/blog_item.html.twig' with {'blog':page, 'page':child, 'truncate':true} %}#}
+  {#{% include 'dalys/' ~ skyrius ~ '-pamoka.html.twig' %}#}
   
 {% endblock %}
 
@@ -31,6 +56,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+    {% do assets.addJs('jquery-ui-js') %}
 {% endblock %}
 
 {% block skriptas %}{% endblock %}

@@ -1,9 +1,38 @@
-{% extends 'pamoka.html.twig' %}
+{% extends 'dalys/baze.html.twig' %}
+{#{% set tags = page.taxonomy.tag %}#}
+{#{% if tags %}#}
+{#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
+{#{% else %}#}
+{#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
+{#{% endif %}#}
+
+{% if page.url|split("/")[1] == "iktmokyklai" %}
+  {% set skyrius = page.url|split("/")[2] %}
+{% else %}
+  {% set skyrius = page.url|split("/")[1] %}
+{% endif %}
+
+
+{% block navigacija %}
+  {% if not (grav.uri.param('be-meniu')) and not (config.site.hidesidebaronblogpages.enabled) and not (page.parent.header.hide_sidebar) %}
+    {% include 'dalys/meniu-soninis.html.twig' %}
+  {% endif %}
+{% endblock %}
 
 {% block turinys %}
-	<div id="chapter">
-    	<div id="body-inner">
-			{{ page.content }}
-		</div>
-    </div>
+  {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
+  {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: page.header.lead|striptags} %}
+  
+  {% include 'dalys/' ~ skyrius ~ '-pamoka.html.twig' %}
+  
+  {% include 'dalys/' ~ skyrius ~ '-pamoka.html.twig' %}
+  
 {% endblock %}
+
+{% block padas %}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block skriptas %}{% endblock %}

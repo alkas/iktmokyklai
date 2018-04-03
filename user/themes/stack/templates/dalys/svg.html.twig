@@ -1,0 +1,65 @@
+<div class="row justify-content-around">
+  <div class="col-md-6">
+    <div id={{ id }}>
+      {{ page.content }}
+    </div>
+    {#<img alt="Image" class="border--round box-shadow-wide" src="{{ url('theme://img/landing-11.jpg') }}">#}
+    <div id="sliderWrapper">
+      <div id="{{ id }}slider" class="ui-slider ui-slider-horizontal ui-wiget ui-wiget-content ui-corner-all">
+        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+      </div>
+  </div>
+  <div>
+    <a class="btn btn--sm" id="{{ id }}play"><span class="btn__text">Rodyti</span></a> 
+    <a class="btn btn--sm" id="{{ id }}slow"><span class="btn__text">Rodyti lėčiau</span></a>
+  </div>
+  </div>
+  <div class="col-md-6 col-lg-5">
+    <div class="switchable__text">
+      <h2>{{ page.title }}</h2>
+      <p class="lead">{{ page.header.lead }}</p>
+    </div>
+  </div>
+</div>
+<script>
+  var {{ id }}svgKonteineris = document.getElementById("{{ id }}svg");
+  var ns = "http://www.w3.org/2000/svg";
+  var {{ id }}tl = new TimelineMax({onUpdate:function(){updateSlider()}});
+  
+  {{ id }}tl.pause();
+
+  var  {{ id }}svgPaths = svgKonteineris.getElementsByTagNameNS(ns, "path");
+
+  for (var i = 0; i <  {{ id }}svgPaths.length; i++){
+    //select path
+    var kelias = svgPaths[i];
+    // get pixel length of the svg path
+    var kelioIlgis = kelias.getTotalLength();
+    // apply styles to stroke-dasharray and stroke-dashoffset
+    kelias.style.strokeDasharray = kelioIlgis+" "+kelioIlgis;
+    kelias.style.strokeDashoffset = kelioIlgis;
+    tl.add(TweenMax.to(kelias.style, 1, {strokeDashoffset:0, delay:(i>0)?"0.2":"0"}, (i>0)?"":""));
+  }
+
+  $("#slider").slider({
+    range: false,
+    min: 0,
+    max: 100,
+    step: 0.1,
+    slide: function(event, ui) {
+      tl.pause();
+      tl.progress(ui.value/100);
+    }
+  });
+
+  function updateSlider() {
+    $("#slider").slider("value", tl.progress()*100);
+  }
+
+  $("#play").click(function() {
+    tl.play();
+    if(tl.progress() === 1){
+      tl.restart();
+    }
+  });
+</script>

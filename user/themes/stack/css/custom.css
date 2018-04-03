@@ -50,3 +50,6 @@ article .article__body p, article .article__body ul, article .article__body h5, 
   font-size: 32px;
   line-height: 68px;
 }
+
+#sliderWrapper { margin-top: 20px; }
+#slider { width:300px; margin-bottom:20px; }
