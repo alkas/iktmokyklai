@@ -1,4 +1,4 @@
-title: PLUGIN_ADMIN.MODULAR
+title: Modular
 '@extends': default
 
 form:
