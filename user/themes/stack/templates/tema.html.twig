@@ -74,7 +74,9 @@ Kolekcijoje elemenų: {{ kolekcija|length }}
   var ns = "http://www.w3.org/2000/svg";
   var tl{{ d }} = new TimelineMax({onUpdate:function(){updateSlider{{ d }}()}});
   
-  tl{{ d }}.pause();
+  //tl{{ d }}.pause();
+  
+  //tl{{ d }}.progress() = 1;
 
   var  svgPaths{{ d }} = svgKonteineris{{ d }}.getElementsByTagNameNS(ns, "path");
 
@@ -86,7 +88,9 @@ Kolekcijoje elemenų: {{ kolekcija|length }}
     // apply styles to stroke-dasharray and stroke-dashoffset
     kelias{{ d }}.style.strokeDasharray = kelioIlgis{{ d }}+" "+kelioIlgis{{ d }};
     kelias{{ d }}.style.strokeDashoffset = kelioIlgis{{ d }};
-    tl{{ d }}.add(TweenMax.to(kelias{{ d }}.style, 1, {strokeDashoffset:0, delay:(i>0)?"0.2":"0"}, (i>0)?"":""));
+    var laikas{{ d }} = kelioIlgis{{ d }}/200;
+    tl{{ d }}.add(TweenMax.to(kelias{{ d }}.style, laikas{{ d }}, {strokeDashoffset:0}, (i>0)?"":""));
+    // tl{{ d }}.add(TweenMax.to(kelias{{ d }}.style, laikas{{ d }}, {strokeDashoffset:0, delay:(i>0)?"00":"0"}, (i>0)?"":""));
   }
 
   $("#{{ raide }}{{ d }}slider").slider({

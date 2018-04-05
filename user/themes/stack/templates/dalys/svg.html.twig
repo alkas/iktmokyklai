@@ -1,6 +1,6 @@
 <div class="row justify-content-around">
-  <div class="col-md-6">
-    <div id="{{ id }}svg">
+  <div class="col-lg-6">
+    <div id="{{ id }}svg" class="linijos">
       {{ page.content }}
     </div>
     {#<img alt="Image" class="border--round box-shadow-wide" src="{{ url('theme://img/landing-11.jpg') }}">#}
@@ -14,52 +14,10 @@
     <a class="btn btn--sm" id="{{ id }}slow"><span class="btn__text">Rodyti lėčiau</span></a>
   </div>
   </div>
-  <div class="col-md-6 col-lg-5">
+  <div class="col-lg-5">
     <div class="switchable__text">
       <h2>{{ page.title }}</h2>
       <p class="lead">{{ page.header.lead }}</p>
     </div>
   </div>
 </div>
-{# <script>
-  var {{ id }}svgKonteineris = document.getElementById("{{ id }}svg");
-  var ns = "http://www.w3.org/2000/svg";
-  var {{ id }}tl = new TimelineMax({onUpdate:function(){updateSlider()}});
-  
-  {{ id }}tl.pause();
-
-  var  {{ id }}svgPaths = {{ id }}svgKonteineris.getElementsByTagNameNS(ns, "path");
-
-  for (var i = 0; i <  {{ id }}svgPaths.length; i++){
-    //select path
-    var {{ id }}kelias = {{ id }}svgPaths[i];
-    // get pixel length of the svg path
-    var {{ id }}kelioIlgis = {{ id }}kelias.getTotalLength();
-    // apply styles to stroke-dasharray and stroke-dashoffset
-    {{ id }}kelias.style.strokeDasharray = {{ id }}kelioIlgis+" "+{{ id }}kelioIlgis;
-    {{ id }}kelias.style.strokeDashoffset = {{ id }}kelioIlgis;
-    {{ id }}tl.add(TweenMax.to({{ id }}kelias.style, 1, {strokeDashoffset:0, delay:(i>0)?"0.2":"0"}, (i>0)?"":""));
-  }
-
-  $("#{{ id }}slider").slider({
-    range: false,
-    min: 0,
-    max: 100,
-    step: 0.1,
-    slide: function(event, ui) {
-      {{ id }}tl.pause();
-      {{ id }}tl.progress(ui.value/100);
-    }
-  });
-
-  function updateSlider() {
-    $("#{{ id }}slider").slider("value", {{ id }}tl.progress()*100);
-  }
-
-  $("#{{ id }}play").click(function() {
-    {{ id }}tl.play();
-    if({{ id }}tl.progress() === 1){
-      {{ id }}tl.restart();
-    }
-  });
-</script> #}

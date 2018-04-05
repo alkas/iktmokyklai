@@ -53,3 +53,7 @@ article .article__body p, article .article__body ul, article .article__body h5, 
 
 #sliderWrapper { margin-top: 20px; }
 #slider { width:300px; margin-bottom:20px; }
+
+.linijos {
+  background-image: url("data:image/svg+xml;utf8,<svg width='540' height='454' viewBox='0 0 300 540' xmlns='http://www.w3.org/2000/svg'><path stroke='#17a2b8' fill='transparent' d='M-300,32 L600,32' stroke-width='4'/><path stroke='#17a2b8' fill='transparent' d='M-300,162 L600,162' stroke-width='1'/><path stroke='#17a2b8' fill='transparent' d='M-300,292 L600,292' stroke-width='1'/><path stroke='#17a2b8' fill='transparent' d='M-300,422 L600,422' stroke-width='4'/></svg>");
+}
