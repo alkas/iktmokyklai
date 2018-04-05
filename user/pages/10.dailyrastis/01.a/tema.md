@@ -1,5 +1,5 @@
 ---
-title: 'A raidė'
+title: 'A, Ą raidės'
 taxonomy:
     kategorija:
         - a

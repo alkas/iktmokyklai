@@ -1,5 +1,5 @@
 ---
-title: N raidė
+title: 'N raidė'
 taxonomy:
     category: docs
 ---

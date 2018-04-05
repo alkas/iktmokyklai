@@ -1,14 +1,11 @@
 {% extends 'dalys/baze.html.twig' %}
 {% set raide = page.taxonomy.kategorija[0] %}
 
-
-
 {#{% if tags %}#}
 {#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
 {#{% else %}#}
 {#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai'}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
 {#{% endif %}#}
-
 
 {% if page.url|split("/")[1] == "iktmokyklai" %}
   {% set skyrius = page.url|split("/")[2] %}
@@ -30,20 +27,13 @@
 {% block turinys %}
   {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
   {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: page.header.lead|striptags} %}
-  
-  {{ raide }}
-  
+    
   {#{% set kolekcija = page.collection({'items':{'@page': '/dailyrastis/typo'}}) %}#}
   {% set kolekcija = page.collection({'items':{'@taxonomy':{'zyma': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
 
-Kolekcijoje elemenų: {{ kolekcija|length }}
-{% for m in 1..kolekcija|length %}
-    * {{ m }}
-{% endfor %}
-
   {% for k in kolekcija %}
     {% set id = raide ~ loop.index %}
-    <section class="{% if loop.index is divisibleby(2) %}switchable {% endif %}feature-large">
+    <section class="{% if loop.index is divisibleby(2) %}switchable {% endif %}feature-large space--sm">
       <div class="container">
         {% include 'dalys/svg.html.twig' with {'page':k, 'id': id} %}
       </div>
@@ -74,7 +64,7 @@ Kolekcijoje elemenų: {{ kolekcija|length }}
   var ns = "http://www.w3.org/2000/svg";
   var tl{{ d }} = new TimelineMax({onUpdate:function(){updateSlider{{ d }}()}});
   
-  //tl{{ d }}.pause();
+  tl{{ d }}.pause();
   
   //tl{{ d }}.progress() = 1;
 
