@@ -1,6 +1,6 @@
 <div class="row justify-content-around">
   <div class="col-md-6">
-    <div id={{ id }}>
+    <div id="{{ id }}svg">
       {{ page.content }}
     </div>
     {#<img alt="Image" class="border--round box-shadow-wide" src="{{ url('theme://img/landing-11.jpg') }}">#}
@@ -21,45 +21,45 @@
     </div>
   </div>
 </div>
-<script>
+{# <script>
   var {{ id }}svgKonteineris = document.getElementById("{{ id }}svg");
   var ns = "http://www.w3.org/2000/svg";
   var {{ id }}tl = new TimelineMax({onUpdate:function(){updateSlider()}});
   
   {{ id }}tl.pause();
 
-  var  {{ id }}svgPaths = svgKonteineris.getElementsByTagNameNS(ns, "path");
+  var  {{ id }}svgPaths = {{ id }}svgKonteineris.getElementsByTagNameNS(ns, "path");
 
   for (var i = 0; i <  {{ id }}svgPaths.length; i++){
     //select path
-    var kelias = svgPaths[i];
+    var {{ id }}kelias = {{ id }}svgPaths[i];
     // get pixel length of the svg path
-    var kelioIlgis = kelias.getTotalLength();
+    var {{ id }}kelioIlgis = {{ id }}kelias.getTotalLength();
     // apply styles to stroke-dasharray and stroke-dashoffset
-    kelias.style.strokeDasharray = kelioIlgis+" "+kelioIlgis;
-    kelias.style.strokeDashoffset = kelioIlgis;
-    tl.add(TweenMax.to(kelias.style, 1, {strokeDashoffset:0, delay:(i>0)?"0.2":"0"}, (i>0)?"":""));
+    {{ id }}kelias.style.strokeDasharray = {{ id }}kelioIlgis+" "+{{ id }}kelioIlgis;
+    {{ id }}kelias.style.strokeDashoffset = {{ id }}kelioIlgis;
+    {{ id }}tl.add(TweenMax.to({{ id }}kelias.style, 1, {strokeDashoffset:0, delay:(i>0)?"0.2":"0"}, (i>0)?"":""));
   }
 
-  $("#slider").slider({
+  $("#{{ id }}slider").slider({
     range: false,
     min: 0,
     max: 100,
     step: 0.1,
     slide: function(event, ui) {
-      tl.pause();
-      tl.progress(ui.value/100);
+      {{ id }}tl.pause();
+      {{ id }}tl.progress(ui.value/100);
     }
   });
 
   function updateSlider() {
-    $("#slider").slider("value", tl.progress()*100);
+    $("#{{ id }}slider").slider("value", {{ id }}tl.progress()*100);
   }
 
-  $("#play").click(function() {
-    tl.play();
-    if(tl.progress() === 1){
-      tl.restart();
+  $("#{{ id }}play").click(function() {
+    {{ id }}tl.play();
+    if({{ id }}tl.progress() === 1){
+      {{ id }}tl.restart();
     }
   });
-</script>
+</script> #}
