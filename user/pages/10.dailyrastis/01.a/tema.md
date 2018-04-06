@@ -1,5 +1,5 @@
 ---
-title: 'A, Ą raidės'
+title: 'A ir Ą raidės'
 taxonomy:
     raide:
         - a

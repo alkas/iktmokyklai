@@ -43,6 +43,10 @@
 {% endmacro %}
 
 <ul class="menu-vertical">
-    <li>{{ pradinis_adresas }}</li>
+  <li>
+    <a href="{{ uri.rootUrl() ~ pradinis_adresas }}">
+      Pradžia
+    </a>
+  </li>
   {{ _self.loop(page.find(pradinis_adresas), '') }}
 </ul>

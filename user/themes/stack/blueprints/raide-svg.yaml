@@ -1,0 +1,14 @@
+title: Raidė-svg
+'@extends': default
+
+form:
+  
+  fields:
+    
+    tabs:
+      
+      fields:
+        content:
+        
+          fields:
+            header.svg_kodas:

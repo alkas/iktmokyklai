@@ -29,6 +29,8 @@ form:
             
             header.lead:
               type: text
+              validate:
+                type: textarea
               style: vertical
               label: Paantraštė
 
