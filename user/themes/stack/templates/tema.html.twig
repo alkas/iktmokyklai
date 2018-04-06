@@ -26,14 +26,36 @@
 
 {% block turinys %}
   {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
+  {# ------------------------------------------------- #}
   {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: page.header.lead|striptags} %}
     
+  {# Puslapio navigacija dešiniame šone #}
+  {# ------------------------------------------------- #}
+  {% set elementai = page.collection({'items':{'@taxonomy':{'zyma': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
+  {% if elementai|length > 1 %}
+    <section class="page-navigator">
+      <ul>
+        {#<li>#}
+        {% for el in elementai %}
+          {% set id = raide ~ loop.index %}
+          <li>
+            <a href="#{{ id }}sekcija" class="inner-link" data-title="{{ el.title }}"></a>
+            {#<a href="#{{ raide }}{{ loop.index }}sekcija" class="inner-link" data-title="{{ el.title }}">#}
+          </li>
+        {% endfor %}
+        {#</li>#}
+      </ul>
+    </section>
+  {% endif %}
+  
+  {# elementų sąrašas #}
+  {# ------------------------------------------------- #}
   {#{% set kolekcija = page.collection({'items':{'@page': '/dailyrastis/typo'}}) %}#}
   {% set kolekcija = page.collection({'items':{'@taxonomy':{'zyma': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
-
+  
   {% for k in kolekcija %}
     {% set id = raide ~ loop.index %}
-    <section class="{% if loop.index is divisibleby(2) %}switchable {% endif %}feature-large space--sm">
+    <section id="{{ id }}sekcija" class="{% if loop.index is divisibleby(2) %}switchable {% endif %}feature-large space--sm">
       <div class="container">
         {% include 'dalys/svg.html.twig' with {'page':k, 'id': id} %}
       </div>
@@ -99,9 +121,16 @@
   }
 
   $("#{{ raide }}{{ d }}play").click(function() {
-    tl{{ d }}.play();
+    tl{{ d }}.timeScale(1).play();
     if(tl{{ d }}.progress() === 1){
-      tl{{ d }}.restart();
+      tl{{ d }}.timeScale(1).restart();
+    }
+  });
+  
+  $("#{{ raide }}{{ d }}slow").click(function() {
+    tl{{ d }}.timeScale(0.3).play();
+    if(tl{{ d }}.progress() === 1){
+      tl{{ d }}.timeScale(0.3).restart();
     }
   });
   

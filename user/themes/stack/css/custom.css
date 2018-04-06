@@ -51,7 +51,7 @@ article .article__body p, article .article__body ul, article .article__body h5, 
   line-height: 68px;
 }
 
-#sliderWrapper { margin-top: 20px; }
+#sliderWrapper { margin-top: 10px; margin-bottom: 20px; }
 #slider { width:300px; margin-bottom:20px; }
 
 .linijos {
