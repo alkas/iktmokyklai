@@ -1,10 +1,8 @@
 ---
 title: 'A, Ą raidės'
 taxonomy:
-    kategorija:
+    raide:
         - a
-    category:
-        - docs
 ---
 
 ### Chapter 2

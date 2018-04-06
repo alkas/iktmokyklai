@@ -1,5 +1,5 @@
 {% extends 'dalys/baze.html.twig' %}
-{% set raide = page.taxonomy.kategorija[0] %}
+{% set raide = page.taxonomy.raide[0] %}
 
 {#{% if tags %}#}
 {#    {% set progress = page.collection({'items':{'@taxonomy':{'kategorija': 'diktantai', 'tag': tags}},'order': {'by': 'default', 'dir': 'asc'}}) %}#}
@@ -31,7 +31,7 @@
     
   {# Puslapio navigacija dešiniame šone #}
   {# ------------------------------------------------- #}
-  {% set elementai = page.collection({'items':{'@taxonomy':{'zyma': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
+  {% set elementai = page.collection({'items':{'@taxonomy':{'raides': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
   {% if elementai|length > 1 %}
     <section class="page-navigator">
       <ul>
@@ -51,7 +51,7 @@
   {# elementų sąrašas #}
   {# ------------------------------------------------- #}
   {#{% set kolekcija = page.collection({'items':{'@page': '/dailyrastis/typo'}}) %}#}
-  {% set kolekcija = page.collection({'items':{'@taxonomy':{'zyma': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
+  {% set kolekcija = page.collection({'items':{'@taxonomy':{'raides': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
   
   {% for k in kolekcija %}
     {% set id = raide ~ loop.index %}
@@ -78,7 +78,7 @@
 {% endblock %}
 
 {% block skriptas %}
-{% set kolekcija = page.collection({'items':{'@taxonomy':{'zyma': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
+{% set kolekcija = page.collection({'items':{'@taxonomy':{'raides': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
 {% for d in 1..kolekcija|length %}
 <script>
 
@@ -97,11 +97,19 @@
     var kelias{{ d }} = svgPaths{{ d }}[i];
     // get pixel length of the svg path
     var kelioIlgis{{ d }} = kelias{{ d }}.getTotalLength();
+    // firefoxui
+    var storis{{ d }} = kelias{{ d }}.getAttribute("stroke-width");
+    
     // apply styles to stroke-dasharray and stroke-dashoffset
-    kelias{{ d }}.style.strokeDasharray = kelioIlgis{{ d }}+" "+kelioIlgis{{ d }};
-    kelias{{ d }}.style.strokeDashoffset = kelioIlgis{{ d }};
+    kelias{{ d }}.style.strokeDasharray = (kelioIlgis{{ d }})+" "+(kelioIlgis{{ d }});
+    kelias{{ d }}.style.strokeDashoffset = (/Firefox/i.test(navigator.userAgent))? kelioIlgis{{ d }}/storis{{ d }} : kelioIlgis{{ d }};
     var laikas{{ d }} = kelioIlgis{{ d }}/200;
-    tl{{ d }}.add(TweenMax.to(kelias{{ d }}.style, laikas{{ d }}, {strokeDashoffset:0}, (i>0)?"":""));
+    
+    tl{{ d }}.add(TweenMax.to(kelias{{ d }}.style, laikas{{ d }}, {strokeDashoffset:0, onUpdate:function(){
+      var n = document.createTextNode(' ');
+      document.body.appendChild(n);
+      document.body.removeChild(n);
+    }}, (i>0)?"-=0.8":""));
     // tl{{ d }}.add(TweenMax.to(kelias{{ d }}.style, laikas{{ d }}, {strokeDashoffset:0, delay:(i>0)?"00":"0"}, (i>0)?"":""));
   }
 

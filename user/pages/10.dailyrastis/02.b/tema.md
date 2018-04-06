@@ -1,7 +1,7 @@
 ---
 title: 'B raidė'
 taxonomy:
-    kategorija:
+    raide:
         - b
 ---
 

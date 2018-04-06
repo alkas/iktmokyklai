@@ -1,7 +1,7 @@
 ---
 title: 'b mažoji'
 taxonomy:
-    zyma:
+    raides:
         - b
 ---
 

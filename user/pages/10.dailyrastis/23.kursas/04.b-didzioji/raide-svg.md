@@ -2,7 +2,7 @@
 title: 'B didžioji'
 lead: asdasdasdasd
 taxonomy:
-    zyma:
+    raides:
         - b
 ---
 

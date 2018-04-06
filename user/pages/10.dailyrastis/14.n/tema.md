@@ -1,7 +1,8 @@
 ---
 title: 'N raidė'
 taxonomy:
-    category: docs
+    raide:
+        - 'n'
 ---
 
 ### Chapter 3

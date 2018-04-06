@@ -1,9 +1,17 @@
 ---
 title: 'a mažoji raidė'
 taxonomy:
-    zyma:
+    raides:
         - a
 visible: true
+content:
+    items: '@self.children'
+    limit: '5'
+    order:
+        by: date
+        dir: desc
+    pagination: '1'
+    url_taxonomy_filters: '1'
 ---
 
 <svg width="270" height="454" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 270 454" enable-background="new 0 0 270 454" xml:space="preserve">
