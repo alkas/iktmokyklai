@@ -10,6 +10,10 @@
   width: 160px; max-height: 68px; top: 0;
 }
 
+footer .logo {
+  width: 140px; max-height: 54px !important;
+}
+
 /* tekstas  */
 article .article__body p, article .article__body ul, article .article__body h5, .article__body h4, .article__body h3, .article__body h2 {
   max-width: 762px;
@@ -52,4 +56,13 @@ article .article__body p, article .article__body ul, article .article__body h5, 
 }
 
 #sliderWrapper { margin-top: 10px; margin-bottom: 20px; }
-.ui-slider { width:300px; margin-bottom:20px; }
+.ui-slider { max-width: 400px; margin: auto; }
+
+/* buttons */
+.btn--primary, .btn--primary:visited {
+  color: #ffffff;
+}
+@media (max-width: 767px) {
+  .btn:not(:last-child) {
+    margin-bottom: 0;
+  }

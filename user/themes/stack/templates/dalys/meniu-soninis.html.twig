@@ -1,3 +1,9 @@
+{% if page.url|split("/")[1] == "iktmokyklai" %}
+  {% set skyrius = page.url|split("/")[2] %}
+{% else %}
+  {% set skyrius = page.url|split("/")[1] %}
+{% endif %}
+
 <div class="nav-container nav-container--sidebar">
   <div class="nav-sidebar-column">
     <div class="text-center text-block">
@@ -5,14 +11,14 @@
         <img alt="logo" class="logo" src="{{ url("theme://images/iktmokyklai-logo-min.svg") }}" />
       </a>
       <p>
-        Build Something
-        <em>Brilliant.</em>
+        Mokinkime vaikus rašyti
+        <em>{% if skyrius == 'dailyrastis' %}dailiai{% else %}taisyklingai{% endif %}.</em>
       </p>
       {#<p>{% include 'partials/search.html.twig' %}</p>#}
     </div>
     <hr>
     <div class="text-block">
-      {% include 'dalys/diktantai-meniu_sarasas.html.twig' %}
+      {% include 'dalys/meniu-soninis_sarasas.html.twig' with {skyrius: skyrius} %}
     </div>
     <hr>
     <div>
@@ -40,7 +46,7 @@
       </ul>
       <div>
         <span class="type--fine-print type--fade">
-          &copy; Copyright
+          &copy;
           <span class="update-year"></span> IKT mokyklai
         </span>
       </div>

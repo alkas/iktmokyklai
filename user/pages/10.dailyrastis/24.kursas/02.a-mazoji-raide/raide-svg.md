@@ -1,5 +1,5 @@
 ---
-title: 'a mažoji'
+title: 'a mažoji raidė'
 taxonomy:
     raides:
         - a

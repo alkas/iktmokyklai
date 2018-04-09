@@ -1,6 +1,5 @@
 ---
 title: 'Ą didžioji ir ą mažoji nosinės raidės'
-lead: 'dfwed jwfjwoefj woejfwoej woejf owej2o3jr ojewojfowjgoweij owjiew'
 published: true
 taxonomy:
     raides:
@@ -10,7 +9,7 @@ svg_kodas: "<path fill=\"none\" stroke=\"#000000\" stroke-width=\"8\" stroke-lin
 svg_plotis: 450
 svg_aukstis: 400
 koeficientas: 1
-svg_platus: true
+svg_platus: false
 content:
     items:
         - '@self.children'

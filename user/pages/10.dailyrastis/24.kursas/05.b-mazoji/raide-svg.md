@@ -1,5 +1,5 @@
 ---
-title: 'b mažoji'
+title: 'b mažoji raidė'
 taxonomy:
     raides:
         - b
@@ -7,5 +7,6 @@ svg_kodas: '<path fill="none" stroke="#010202" stroke-width="8" stroke-linecap="
 svg_plotis: 340
 svg_aukstis: 400
 koeficientas: 1
+svg_platus: false
 ---
 

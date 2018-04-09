@@ -48,12 +48,20 @@
     {% do assets.addJs('smooth-scroll-js') %}
     {% do assets.addJs('theme://js/scripts.js') %}
   {% endblock %}
-
   {{ assets.js('up') }}
+  
+  {# Google tags ir analytics kodai #}
+  {% if base_url_absolute == 'https://iktmokyklai.lt' %}
+    {% include 'dalys/google-analytics.html.twig' %}
+    {% include 'dalys/gtm.html.twig' %}
+  {% endif %}
 
 {% endblock head %}
 </head>
 <body>
+  {% if base_url_absolute == 'https://iktmokyklai.lt' %}
+    {% include 'dalys/gtm-noscript.html.twig' %}
+  {% endif %}
   <a id="start"></a>
   
     {% block navigacija %}
