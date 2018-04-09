@@ -1,5 +1,5 @@
 ---
-title: 'I, Į ir Y raidės'
+title: 'I ir Į raidės'
 taxonomy:
     raide:
         - i

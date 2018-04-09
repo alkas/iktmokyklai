@@ -1,23 +1,64 @@
-<div class="row justify-content-around">
-  <div class="col-lg-6">
-    <div id="{{ id }}svg" class="linijos">
-      {{ page.content }}
-    </div>
-    {#<img alt="Image" class="border--round box-shadow-wide" src="{{ url('theme://img/landing-11.jpg') }}">#}
-    <div id="sliderWrapper">
-      <div id="{{ id }}slider" class="ui-slider ui-slider-horizontal ui-wiget ui-wiget-content ui-corner-all">
-        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+{% if mobile_detect() != 'desktop' %}
+  {% set koeficientas = page.header.koeficientas * 0.5 %}
+{% else %}
+  {% set koeficientas = page.header.koeficientas %}
+{% endif %}
+
+{% if page.header.svg_platus == 1 %}
+  {% set platus = true %}
+{% else %}
+  {% set platus = false %}
+{% endif %}
+
+{% if platus %}
+  <section{% if idx is divisibleby(2) %} class="bg--secondary"{% endif %}>
+{% else %}
+  <section id="{{ id }}sekcija" class="switchable{% if idx is divisibleby(2) %} switchable--switch bg--secondary{% endif %} feature-large size-sm">
+{% endif %}
+
+  <div class="container">
+
+    <div class="row justify-content-around">
+      
+      <div class="{% if not platus %}col-md-6 {% endif %}col-12">
+        <h2 class="{% if not platus %}d-md-none {% endif %}text-center">{{ page.title }}</h2>
+
+        <div id="{{ id }}svg" style="background-size: auto {{ 390 * koeficientas }}px; background-position: 0px 0px; background-image: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE1NjAgMzkwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxNTYwIDM5MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzZBOUUxIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTAsNTBoMTU2MCIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM2QTlFMSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0wLDE4MGgxNTYwIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzZBOUUxIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTAsMzEwaDE1NjAiLz48L3N2Zz4=');">
+        {# {{ page.content }} #}
+          <svg width="{{ page.header.svg_plotis * koeficientas }}" height="{{ page.header.svg_aukstis * koeficientas }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 {{ page.header.svg_plotis }} {{ page.header.svg_aukstis }}" enable-background="new 0 0 {{ page.header.svg_plotis }} {{ page.header.svg_aukstis }}" preserveAspectRatio="xMinYMid" xml:space="preserve">
+            {{ page.header.svg_kodas }}
+          </svg>
+        </div>
+        {#<img alt="Image" class="border--round box-shadow-wide" src="{{ url('theme://img/landing-11.jpg') }}">#}
+        <div id="sliderWrapper">
+          <div id="{{ id }}slider" class="ui-slider ui-slider-horizontal ui-wiget ui-wiget-content ui-corner-all">
+            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+          </div>
+        </div>
+        <div class="text-center">
+          <a class="btn btn--sm btn--primary" id="{{ id }}play"><span class="btn__text">Rodyti</span></a>
+          <a class="btn btn--sm btn--primary-1" id="{{ id }}slow"><span class="btn__text">Rodyti lėčiau</span></a>
+        </div>
+      </div> 
+      <div class="col-md-6 col-lg-5">
+        <div class="switchable__text">
+          <h2>{{ page.title }}</h2>
+
+        {% if mobile_detect() == 'desktop' %}
+          <p>Stalinis kompiuteris</p>
+        {% elseif isMobile() %}
+          <p>Telefonas</p>
+        {% else %}
+          <p>Planšetė</p>
+        {% endif %}
+
+        {% if mobile_detect() != 'desktop' %}
+          <p>finger touch</p>
+        {% endif %}
+
+          <div class="lead">{{ page.content }}</div>
+        </div>
       </div>
-  </div>
-  <div class="text-center">
-    <a class="btn btn--sm btn--primary" id="{{ id }}play"><span class="btn__text">Rodyti</span></a>
-    <a class="btn btn--sm btn--primary-1" id="{{ id }}slow"><span class="btn__text">Rodyti lėčiau</span></a>
-  </div>
-  </div>
-  <div class="col-lg-5">
-    <div class="switchable__text">
-      <h2>{{ page.title }}</h2>
-      <p class="lead">{{ page.header.lead }}</p>
     </div>
   </div>
-</div>
+</section>

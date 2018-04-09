@@ -4,11 +4,66 @@ title: Raidė-svg
 form:
   
   fields:
-    
     tabs:
       
       fields:
-        content:
-        
+        svg:
+          type: tab
+          title: SVG kodas
+
           fields:
-            header.svg_kodas:
+            columns:
+              type: columns
+              fields:
+                column11:
+                  type: column
+                  fields:
+
+                    header.svg_kodas:
+                      type: textarea
+                      label: SVG kodas
+                      size: large
+                      help: Tik path dalys
+
+                column12:
+                  type: column
+                  fields:
+
+                    header.svg_plotis:
+                      type: text
+                      label: Plotis
+                      size: small
+                      default: 340
+                      help: Vienos raidės plotis - 340
+                      validate:
+                        type: int
+
+                    header.svg_aukstis:
+                      type: text
+                      label: Aukštis
+                      size: small
+                      default: 400
+                      help: Standartinis aukštis - 400, su apatiniu registru - 460
+                      validate:
+                        type: int
+                    
+                    header.koeficientas:
+                      type: text
+                      label: Koeficientas
+                      size: small
+                      default: 1
+                      validate:
+                        type: number
+                      help: Jei plotis didesnis nei 900, reikia mažinti koeficientą  
+
+                    header.svg_platus:
+                      type: toggle
+                      label: SVG per visą plotį
+                      highlight: 1
+                      default: 0
+                      options:
+                        1: Taip
+                        0: Ne
+                      validate:
+                        type: bool
+                      help: Raidžių eilutė rodoma per visą lapo plotį

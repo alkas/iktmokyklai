@@ -27,42 +27,34 @@
 {% block turinys %}
   {# antraštė. stiliai: light, medium, dark, primary, image; dydis: sm, md, lg; #}
   {# ------------------------------------------------- #}
-  {% include 'elementai/title-section-1.html.twig' with {stilius: 'light', dydis: 'sm', lead: page.header.lead|striptags} %}
+  {% include 'elementai/title-section-1.html.twig' with {stilius: 'primary', dydis: 'sm', lead: page.header.lead|striptags} %}
     
+  {# elementų sąrašas #}
+  {# ------------------------------------------------- #}
+  {#{% set kolekcija = page.collection({'items':{'@page': '/dailyrastis/typo'}}) %}#}
+  {% set kolekcija = page.collection({'items':{'@taxonomy':{'raides': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
+  {% for k in kolekcija %}
+    {% set id = raide ~ loop.index %}
+    
+        {% include 'dalys/svg.html.twig' with {'page':k, 'id': id, 'idx': loop.index} %}
+      
+  {% endfor %}
+  
   {# Puslapio navigacija dešiniame šone #}
   {# ------------------------------------------------- #}
   {% set elementai = page.collection({'items':{'@taxonomy':{'raides': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
   {% if elementai|length > 1 %}
     <section class="page-navigator">
       <ul>
-        {#<li>#}
         {% for el in elementai %}
           {% set id = raide ~ loop.index %}
           <li>
             <a href="#{{ id }}sekcija" class="inner-link" data-title="{{ el.title }}"></a>
-            {#<a href="#{{ raide }}{{ loop.index }}sekcija" class="inner-link" data-title="{{ el.title }}">#}
           </li>
         {% endfor %}
-        {#</li>#}
       </ul>
     </section>
   {% endif %}
-  
-  {# elementų sąrašas #}
-  {# ------------------------------------------------- #}
-  {#{% set kolekcija = page.collection({'items':{'@page': '/dailyrastis/typo'}}) %}#}
-  {% set kolekcija = page.collection({'items':{'@taxonomy':{'raides': raide}}, 'order': {'by': 'default', 'dir': 'asc'}}) %}
-  
-  {% for k in kolekcija %}
-    {% set id = raide ~ loop.index %}
-    <section id="{{ id }}sekcija" class="{% if loop.index is divisibleby(2) %}switchable {% endif %}feature-large space--sm">
-      <div class="container">
-        {% include 'dalys/svg.html.twig' with {'page':k, 'id': id} %}
-      </div>
-    </section>
-    <hr>
-  {% endfor %}
-  
   
   {#{% include 'partials/blog_item.html.twig' with {'blog':page, 'page':child, 'truncate':true} %}#}
   {#{% include 'dalys/' ~ skyrius ~ '-pamoka.html.twig' %}#}
@@ -74,6 +66,9 @@
 {% block javascripts %}
     {{ parent() }}
     {% do assets.addJs('jquery-ui-js') %}
+    {% if mobile_detect() != 'desktop' %}
+      {% do assets.addJs('//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js') %}
+    {% endif %}
     {% do assets.addJs('TweenMax-js') %}
 {% endblock %}
 
@@ -129,9 +124,9 @@
   }
 
   $("#{{ raide }}{{ d }}play").click(function() {
-    tl{{ d }}.timeScale(1).play();
+    tl{{ d }}.timeScale(1).play(0);
     if(tl{{ d }}.progress() === 1){
-      tl{{ d }}.timeScale(1).restart();
+      tl{{ d }}.timeScale(1).restart(0);
     }
   });
   

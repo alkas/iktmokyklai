@@ -52,9 +52,4 @@ article .article__body p, article .article__body ul, article .article__body h5, 
 }
 
 #sliderWrapper { margin-top: 10px; margin-bottom: 20px; }
-#slider { width:300px; margin-bottom:20px; }
-
-.linijos {
-  background-image: url("data:image/svg+xml;utf8,<svg width='600' height='454' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 600 454' enable-background='new 0 0 600 454' xml:space='preserve'><path fill='none' stroke='#36A9E1' stroke-width='4' stroke-miterlimit='10' d='M0,32h600'/><path fill='none' stroke='#36A9E1' stroke-miterlimit='10' d='M0,162h600'/><path fill='none' stroke='#36A9E1' stroke-miterlimit='10' d='M0,292h600'/><path fill='none' stroke='#36A9E1' stroke-width='4' stroke-miterlimit='10' d='M0,422h600'/></svg>");
-  height: 454px;
-}
+.ui-slider { width:300px; margin-bottom:20px; }
