@@ -9,3 +9,8 @@
       {{ module.content }}
     {% endfor %}
 {% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+    {% do assets.addJs('parallax-js') %}
+  {% endblock %}

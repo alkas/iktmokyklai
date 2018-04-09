@@ -1,15 +1,17 @@
+{# {% set iliustracija = page.media.images|first %} #}
+{% set iliustracija = page.media.images|first.url %}
 <section class="switchable feature-large">
   <div class="container">
     <div class="row justify-content-around">
-      <div class="col-md-6">
-        <img alt="Image" class="border--round" src="{{ url('theme://img/education-2.jpg') }}" />
-      </div>
       <div class="col-md-6 col-lg-5">
         <div class="switchable__text">
           <h2>{{ page.title }}</h2>
           <p class="lead">{{ page.header.lead }}</p>
           {{ content }}
         </div>
+      </div>
+      <div class="col-md-6">
+        <img alt="Image" class="border--round box-shadow-wide" src="{{ iliustracija }}" />
       </div>
     </div>
   </div>
