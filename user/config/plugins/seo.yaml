@@ -1,4 +1,4 @@
-enabled: true
+enabled: false
 article: true
 restaurant: false
 event: true
